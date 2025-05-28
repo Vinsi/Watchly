@@ -1,0 +1,13 @@
+//
+//  Base.xcconfig
+//
+//
+//  Created by Vinsi
+//
+API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMTcwOWNjMTdmYTcwYzVhNWJjODUzZmMzZDdjYWUyMyIsIm5iZiI6MTY5OTU2MzY4Ni40MDEsInN1YiI6IjY1NGQ0OGE2NWE1ZWQwMDEzYmFiZDUwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2fKT9IBb16rkEbKA68eK2V81G9Pr0nuSDuUjaqhm0A0" // storing in xcconfig not secure for time being as its for interview purpose in production it should securly handled
+API_KEY = "31709cc17fa70c5a5bc853fc3d7cae23"
+CODE_SIGN_STYLE = Automatic
+ENABLE_BITCODE = NO
+PRODUCT_BUNDLE_IDENTIFIER = com.vinsi.watchly
+SWIFT_VERSION = 5.0
+PAGE_SIZE = "10"
