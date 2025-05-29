@@ -80,6 +80,10 @@ struct RootView: View {
                 TrendingMovieListCoordinator(environment: environment)
                     .start()
                     .tag(Router.Tab.list)
+
+                SearchMoviesCoordinator(environment: environment)
+                    .start()
+                    .tag(Router.Tab.search)
             }
             .accentColor(themeManager.currentTheme.colors.primary)
 

@@ -1,0 +1,87 @@
+//
+//  SearchView.swift
+//
+//
+//  Created by Vinsi.
+//
+
+import SwiftUI
+
+struct SearchView: View {
+    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var environment: AppEnvironment
+    @EnvironmentObject private var themeManager: ThemeManager
+    @StateObject var viewModel: SearchViewModel
+    @State var hasError = false
+
+    init(useCase: MovieSearchUseCaseType) {
+        _viewModel = StateObject(wrappedValue: SearchViewModel(useCase: useCase))
+        hasError = hasError
+    }
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                ZStack {
+                    AppBackground()
+
+                    VStack(alignment: .leading) {
+                        SearchBarView(
+                            searchText: $viewModel.searchText,
+                            isLoading: $viewModel.isLoading,
+                            placeholder: Localized.searchPlaceholder,
+                            theme: themeManager.currentTheme
+                        )
+                        .padding(.top, themeManager.currentTheme.spacing.medium)
+                        Spacer()
+
+                        if case .success(let movies) = viewModel.dataState {
+                            MoviesListView(
+                                movies: movies,
+                                onTap: viewModel.onSelect(_:)
+                            )
+                        }
+                    }
+                }
+            }
+
+            .navigationBarTitleDisplayMode(.inline)
+            .onChange(of: viewModel.dataState, perform: { newValue in
+                if case .failure = newValue {
+                    hasError = true
+                } else {
+                    hasError = false
+                }
+            })
+            .onChange(of: viewModel.navigation) { newValue in
+                if case .detail(let id) = newValue {
+                    router.navigate(to: .details(id: id))
+                }
+            }
+        }
+
+        .errorAlert(
+            isPresented: $hasError,
+            errorMessage: viewModel.dataState.errorMessage,
+            retryAction: viewModel.retry
+        )
+        .tabItem {
+            Label(
+                Localized.searchTitle,
+                systemImage: themeManager.currentTheme.images.searchSystemIcon
+            )
+        }
+    }
+}
+
+// MARK: - 🛠 Preview
+
+// TODO: - Fix me
+// #Preview {
+//    SearchView(useCase: MovieSearchUseCaseImpl(service:
+//                                                mockBreadSearchServiceImpl(dictionary: ["." : [.mock()]])
+//                                              ))
+//    .environmentObject(AppEnvironment.shared)
+//    .environmentObject(Router())
+//    .environmentObject(ThemeManager())
+// }

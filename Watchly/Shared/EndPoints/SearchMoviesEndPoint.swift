@@ -10,11 +10,11 @@ struct SearchMoviesEndPoint: EndPointType {
 
     typealias Response = SearchResultsResponse
 //     --url 'https://api.themoviedb.org/3/search/movie?query=mat&include_adult=false&language=en-US&page=1'
-    init(baseURL: String, token: String, page: Int = 0) {
+    init(baseURL: String, token: String, query: String, page: Int = 1) {
         request.add(baseURL: baseURL)
             .add(token: token)
             .set(path: "3/search/movie")
-            .addQuery(query: .init(key: "query", value: ""))
+            .addQuery(query: .init(key: "query", value: query))
             .addQuery(query: .init(key: "include_adult", value: "false"))
             .addQuery(query: .init(key: "language", value: "en-US"))
             .addQuery(query: .init(key: "page", value: "\(page)"))

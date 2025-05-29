@@ -32,16 +32,17 @@ struct TMDBImage: Codable, ExpressibleByStringLiteral {
 extension NetworkError {
     var toTMDBError: any Error {
         // swiftlint:disable opening_brace
-        if case .unexpectedResponse(_, _, .some(let data)) = self,
+        if case .unexpectedResponse(let statusCode, _, .some(let data)) = self,
            let model = try? JSONDecoder().decode(TMDBErrorResponse.self, from: data)
         {
-            return IMDBServerError.serverError(model)
+            return IMDBServerError(model: model, errorCode: statusCode)
         }
         return self
         // swiftlint:enable opening_brace
     }
 }
 
-enum IMDBServerError: Error {
-    case serverError(TMDBErrorResponse)
+struct IMDBServerError: Error {
+    let model: TMDBErrorResponse
+    let errorCode: Int
 }
