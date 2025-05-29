@@ -10,12 +10,12 @@ import Foundation
 /// - Handles data fetching, pagination, and error states.
 /// - Uses `PagingManager` to support paginated API calls.
 
-
 final class TrendingMovieListViewModel: ObservableObject {
 
     enum NavigationEvent: Equatable {
-        case details(id:String)
+        case details(id: String)
     }
+
     /// 🏗 **Published Properties for UI Updates**
     @Published var pageIsLoading = false
     @Published private(set) var viewData: [ListViewDataType] = []
@@ -37,7 +37,7 @@ final class TrendingMovieListViewModel: ObservableObject {
     func loadFromStart() {
         pagingManager.reset()
         Task { [weak self] in
-           await self?.fetch()
+            await self?.fetch()
         }
     }
 
@@ -96,7 +96,6 @@ final class TrendingMovieListViewModel: ObservableObject {
 }
 
 extension TrendingMovieListViewModel: Paginatable {
-    
 
     /// 📦 **Fetches a Page of  trending movies**
     /// - Parameters:

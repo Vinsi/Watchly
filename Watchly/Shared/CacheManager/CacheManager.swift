@@ -1,6 +1,6 @@
 //
 //  CacheManager.swift
-//  
+//
 //
 //  Created by Vinsi.
 //

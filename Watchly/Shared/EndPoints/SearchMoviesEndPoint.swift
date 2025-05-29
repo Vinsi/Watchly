@@ -5,7 +5,6 @@
 //  Created by Vinsi on 28/05/2025.
 //
 
-
 struct SearchMoviesEndPoint: EndPointType {
     let request = RequestBuilder()
 
@@ -20,5 +19,4 @@ struct SearchMoviesEndPoint: EndPointType {
             .addQuery(query: .init(key: "language", value: "en-US"))
             .addQuery(query: .init(key: "page", value: "\(page)"))
     }
-
 }

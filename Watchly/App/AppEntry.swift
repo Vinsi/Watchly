@@ -6,6 +6,7 @@
 //
 import os.signpost
 import SwiftUI
+
 let logg = OSLog(subsystem: "com.signpost.demo", category: "MyMethod")
 
 /// 🏁 **Main Entry Point of the App**
@@ -38,7 +39,6 @@ struct AppEntry: App {
             .environmentObject(router)
             .environmentObject(internetConnectivityChecker)
             .preferredColorScheme(.light)
-
         }
     }
 
@@ -78,8 +78,8 @@ struct RootView: View {
         ZStack {
             TabView(selection: $router.selectedTab) {
                 TrendingMovieListCoordinator(environment: environment)
-                .start()
-                .tag(Router.Tab.list)
+                    .start()
+                    .tag(Router.Tab.list)
             }
             .accentColor(themeManager.currentTheme.colors.primary)
 
@@ -90,21 +90,18 @@ struct RootView: View {
                     .padding()
                     .foregroundColor(theme.colors.secondary)
                     .background(RoundedRectangle(cornerRadius: theme.dimensions.cornerRadius)
-                    .fill(themeManager.currentTheme.colors.primary))
+                        .fill(themeManager.currentTheme.colors.primary))
             }
         }
-
     }
 }
-
 
 // MARK: - 🛠 Preview
 
 #Preview {
     RootView()
-    .environmentObject(AppEnvironment.shared)
-    .environmentObject(Router())
-    .environmentObject(ThemeManager())
-    .environmentObject(InternetConnectivityCheckerImpl(isMock: true))
+        .environmentObject(AppEnvironment.shared)
+        .environmentObject(Router())
+        .environmentObject(ThemeManager())
+        .environmentObject(InternetConnectivityCheckerImpl(isMock: true))
 }
-

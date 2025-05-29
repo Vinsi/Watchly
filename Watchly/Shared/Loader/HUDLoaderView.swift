@@ -1,6 +1,6 @@
 //
 //  HUDLoaderView.swift
-// 
+//
 //
 //  Created by Vinsi.
 //

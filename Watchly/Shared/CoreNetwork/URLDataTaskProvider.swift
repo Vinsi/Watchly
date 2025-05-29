@@ -1,6 +1,6 @@
 //
 //  URLDataTaskProvider.swift
-// 
+//
 //
 //  Created by Vinsi.
 //

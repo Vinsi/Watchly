@@ -1,6 +1,6 @@
 //
 //  DataState.swift
-// 
+//
 //
 //  Created by Vinsi.
 //

@@ -1,6 +1,6 @@
 //
 //  TrendingMovieListView.swift
-//  
+//
 //
 //  Created by Vinsi.
 //
@@ -17,7 +17,7 @@ struct TrendingMovieListView: View {
     @StateObject var viewModel: TrendingMovieListViewModel
     var onTap: ((ListViewDataType) -> Void)?
 
-    init(useCase: GetTrendingMoviesUseCaseType, onTap:  ((ListViewDataType) -> Void)? = nil) {
+    init(useCase: GetTrendingMoviesUseCaseType, onTap: ((ListViewDataType) -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: TrendingMovieListViewModel(useCase: useCase))
         self.onTap = onTap
     }
@@ -48,13 +48,13 @@ struct TrendingMovieListView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onChange(of: viewModel.navigation, perform: { event in
                 switch event {
-                case .details(id: _):
+                case .details:
                     router.navigate(to: .details(id: 12))
                 case .none:
                     break
                 }
             })
-            .onAppear() {
+            .onAppear {
                 viewModel.initialFetch()
             }
         }

@@ -5,7 +5,6 @@
 //  Created by Vinsi on 29/05/2025.
 //
 
-
 protocol MovieGenreListServiceType {
     /// Fetches all trending movies
     /// - Parameters:

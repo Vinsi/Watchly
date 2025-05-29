@@ -1,6 +1,6 @@
 //
 //  Localized.swift
-//  
+//
 //
 //  Created by Vinsi.
 //
@@ -15,7 +15,6 @@ enum Localized {
     static let settingTitle = String(localized: "setting_title")
     static let searchPlaceholder = String(localized: "search_placeholder")
     static let searchButton = String(localized: "search_button")
-    
 
     enum ErrorAlert {
         static let title = String(localized: "error")
@@ -33,6 +32,4 @@ enum Localized {
             String(format: NSLocalizedString("failed_to_decode", comment: ""), message)
         }
     }
-
-
 }

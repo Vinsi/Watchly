@@ -1,6 +1,6 @@
 //
 //  MovieCell.swift
-// 
+//
 //
 //  Created by Vinsi.
 //
@@ -56,7 +56,6 @@ struct MovieCell: View {
                             .foregroundColor(theme.colors.textSecondary)
 
                         Spacer()
-
                     }
                 }
             }

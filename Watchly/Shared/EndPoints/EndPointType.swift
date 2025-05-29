@@ -1,6 +1,6 @@
 //
 //  EndPointType.swift
-// 
+//
 //
 //  Created by Vinsi.
 //
@@ -11,5 +11,3 @@ protocol EndPointType {
     associatedtype Response: Decodable
     var request: RequestBuilder { get }
 }
-
-

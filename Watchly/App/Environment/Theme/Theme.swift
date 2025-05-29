@@ -105,11 +105,13 @@ protocol ColorPalette {
 }
 
 struct DefaultColorPalette: ColorPalette {
-    init(primary: Color = Color(#colorLiteral(red: 0.6127355099, green: 0.1732650101, blue: 0.9525056481, alpha: 1)),
-         secondary: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
-         background: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
-         textPrimary: Color = Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)),
-         textSecondary: Color = Color(#colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))) {
+    init(
+        primary: Color = Color(#colorLiteral(red: 0.6127355099, green: 0.1732650101, blue: 0.9525056481, alpha: 1)),
+        secondary: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+        background: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+        textPrimary: Color = Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)),
+        textSecondary: Color = Color(#colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))
+    ) {
         self.primary = primary
         self.secondary = secondary
         self.background = background

@@ -1,6 +1,6 @@
 //
 //  PagingManager.swift
-// 
+//
 //
 //  Created by Vinsi.
 //

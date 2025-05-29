@@ -5,10 +5,8 @@
 //  Created by Vinsi on 28/05/2025.
 //
 
-
-
-
 // MARK: - SearchResultsResponse
+
 struct SearchResultsResponse: Codable {
     let page: Int
     let results: [MovieSearchResult]
@@ -23,6 +21,7 @@ struct SearchResultsResponse: Codable {
 }
 
 // MARK: - MovieSearchResult
+
 struct MovieSearchResult: Codable, Identifiable {
     let id: Int
     let title: String

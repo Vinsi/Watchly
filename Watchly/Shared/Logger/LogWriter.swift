@@ -1,6 +1,6 @@
 //
 //  LogWriter.swift
-// 
+//
 //
 //  Created by Vinsi.
 //
@@ -41,11 +41,12 @@ public final class LogWriter {
     private var beginTimeStamp = Date()
     private let levelSettings: Levels
 
-    public init(_ prefix: LogPrefixType = .init(value: "##"),
-                attributes: LoggerAttributes = .default,
-                level: Levels = .all,
-                loggingSystem: LoggingSystemType = ConsoleLogger())
-    {
+    public init(
+        _ prefix: LogPrefixType = .init(value: "##"),
+        attributes: LoggerAttributes = .default,
+        level: Levels = .all,
+        loggingSystem: LoggingSystemType = ConsoleLogger()
+    ) {
         levelSettings = level
         prefixWord = prefix.value
         self.attributes = attributes
@@ -135,7 +136,14 @@ public final class LogWriter {
         filename: String = #file,
         line: Int = #line
     ) {
-        log(input, type, .warning, forcedAttributes: forcedAttributes, funcname: funcname, filename: filename, line: line)
+        log(
+            input,
+            type, .warning,
+            forcedAttributes: forcedAttributes,
+            funcname: funcname,
+            filename: filename,
+            line: line
+        )
     }
 
     public func logN(
@@ -146,7 +154,14 @@ public final class LogWriter {
         filename: String = #file,
         line: Int = #line
     ) {
-        log(input, type, .notice, forcedAttributes: forcedAttributes, funcname: funcname, filename: filename, line: line)
+        log(
+            input,
+            type, .notice,
+            forcedAttributes: forcedAttributes,
+            funcname: funcname,
+            filename: filename,
+            line: line
+        )
     }
 }
 
@@ -154,11 +169,11 @@ private extension TimeInterval {
 
     var stringValue: String {
         let interval = Int(self)
-        let mi = Int((self - Double(interval)) * 1000.0)
+        let micro = Int((self - Double(interval)) * 1000.0)
         let seconds = interval % 60
         let minutes = (interval / 60) % 60
         let hours = (interval / 3600)
-        return String(format: "%02d:%02d:%02d:%03d", hours, minutes, seconds, mi)
+        return String(format: "%02d:%02d:%02d:%03d", hours, minutes, seconds, micro)
     }
 }
 

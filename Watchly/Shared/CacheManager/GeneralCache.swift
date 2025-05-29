@@ -1,6 +1,6 @@
 //
 //  GeneralCache.swift
-//  
+//
 //
 //  Created by Vinsi.
 //
@@ -67,4 +67,3 @@ actor GeneralCache<Key: Hashable, Value> {
         }
     }
 }
-

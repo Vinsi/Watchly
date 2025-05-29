@@ -20,27 +20,26 @@ protocol ListViewDataType {
     var popularityScore: Double { get }
     var releaseDate: String? { get }
     var genres: [String] { get }
-
 }
 
 extension Movie: ListViewDataType {
     var posterImage: URL? {
         posterPath?.getImageURL(size: .w92)
     }
-    
+
     var movieID: Int {
         id
     }
-    
+
     var shortDescription: String {
         overview
     }
-    
+
     var popularityScore: Double {
         popularity
     }
-    
+
     var genres: [String] {
-        genreIDs.map {"\($0)"}
+        genreIDs.map { "\($0)" }
     }
 }

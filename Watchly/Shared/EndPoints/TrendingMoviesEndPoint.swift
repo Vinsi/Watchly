@@ -5,11 +5,10 @@
 //  Created by Vinsi on 28/05/2025.
 //
 
-
 struct TrendingMoviesEndPoint: EndPointType {
     typealias Response = TrendingMoviesResponse
     let request = RequestBuilder()
-    //'https://api.themoviedb.org/3/trending/movie/day?language=en-US'
+    // 'https://api.themoviedb.org/3/trending/movie/day?language=en-US'
     init(baseURL: String, token: String, page: Int = 0) {
         request
             .add(baseURL: baseURL)

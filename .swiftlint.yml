@@ -1,0 +1,10 @@
+# Disable specific SwiftLint rules globally
+disabled_rules:
+  - closure_parameter_name
+
+# Alternatively, you can enable all rules first and disable specific ones
+disabled_rules:
+  - trailing_comma
+
+# Exclude specific files or directories from linting
+excluded:

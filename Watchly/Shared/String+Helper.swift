@@ -1,6 +1,6 @@
 //
 //  String+Helper.swift
-// 
+//
 //
 //  Created by Vinsi.
 //

@@ -1,6 +1,6 @@
 //
 //  UIApplication+Helper.swift
-// 
+//
 //
 //  Created by Vinsi on 31/01/2025.
 //

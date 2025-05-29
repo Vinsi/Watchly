@@ -27,8 +27,7 @@ struct TrendingMovieListServiceImpl: TrendingMovieListServiceType {
     var network: NetworkProcesserType
 
     func getAll(page: Int) async throws -> TrendingMoviesResponse {
-        let endPoint = TrendingMoviesEndPoint(baseURL: baseURLProvider.baseURL, token: tokenProvider.token , page: page)
+        let endPoint = TrendingMoviesEndPoint(baseURL: baseURLProvider.baseURL, token: tokenProvider.token, page: page)
         return try await network.request(from: endPoint)
     }
 }
-

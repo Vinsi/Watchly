@@ -1,6 +1,6 @@
 //
 //  NetworkError.swift
-// 
+//
 //
 //  Created by Vinsi.
 //

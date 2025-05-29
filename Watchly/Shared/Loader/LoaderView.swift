@@ -1,6 +1,6 @@
 //
 //  LoaderView.swift
-// 
+//
 //
 //  Created by Vinsi.
 //

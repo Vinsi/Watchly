@@ -5,8 +5,8 @@
 //  Created by Vinsi on 28/05/2025.
 //
 
-
 // MARK: - TrendingMoviesResponse
+
 struct TrendingMoviesResponse: Codable {
     let page: Int
     let results: [Movie]
@@ -22,6 +22,7 @@ struct TrendingMoviesResponse: Codable {
 }
 
 // MARK: - Movie
+
 struct Movie: Codable, Identifiable {
     let id: Int
     let title: String

@@ -1,6 +1,6 @@
 //
 //  Router.swift
-// 
+//
 //
 //  Created by Vinsi.
 //
@@ -17,7 +17,6 @@ final class Router: ObservableObject {
     public enum Tab: String, CaseIterable {
         case list
         case search
-
     }
 
     @Published var navPath = NavigationPath()
@@ -41,11 +40,10 @@ extension Router.Destination {
     @MainActor @ViewBuilder
     var toView: some View {
         switch self {
-        case .details(let movies):
+        case .details:
             EmptyView()
         }
     }
-
 }
 
 extension View {

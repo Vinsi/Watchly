@@ -5,7 +5,6 @@
 //  Created by Vinsi on 28/05/2025.
 //
 
-
 struct TMDBErrorResponse: Codable {
     let success: Bool
     let statusCode: Int
