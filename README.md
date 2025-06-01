@@ -4,12 +4,11 @@
 
 ## 📸 Screenshots
 
-| Home Screen              | Search                       | Details                        | Alert                        |
-| ------------------------ | ---------------------------- | ------------------------------ | ---------------------------- |
-| ![Home](Assets/home.png) | ![Search](Assets/search.png) | ![Details](Assets/detail1.png) | ![Alert](Assets/detail2.png) |
+| Home Screen              | Search                       | Details                        |
+| ------------------------ | ---------------------------- | ------------------------------ |
+| ![Home](Assets/home.png) | ![Search](Assets/search.png) | ![Details](Assets/detail1.png) |
 
 ---
-
 
 ## ✨ Features
 
