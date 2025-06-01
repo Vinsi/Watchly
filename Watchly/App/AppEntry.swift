@@ -8,8 +8,6 @@ import os.signpost
 import SwiftUI
 import TMDBCore
 
-let logg = OSLog(subsystem: "com.signpost.demo", category: "MyMethod")
-
 /// 🏁 **Main Entry Point of the App**
 @main
 struct AppEntry: App {
