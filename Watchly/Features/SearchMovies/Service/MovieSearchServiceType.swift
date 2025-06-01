@@ -19,10 +19,6 @@ struct MovieSearchServiceImpl: SearchServiceType {
     let cacheFacilitator: EndPointCacheFaciltator<SearchMoviesEndPoint>
 
     func search(query: String) async throws -> SearchResultsResponse? {
-        defer {
-            log.logI("search.query:->['\(query)'].completed")
-        }
-        log.logW("search.query:->['\(query)'].started")
         guard query.isNotEmpty else {
             return nil
         }

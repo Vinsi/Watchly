@@ -19,10 +19,12 @@ struct MovieBoxView: View {
 
             ZStack(alignment: .bottomLeading) {
                 RemoteImage(url: posterURL)
-                    .frame(height: 250)
-                    .frame(minWidth: width)
+                    .frame(height: themeManager.currentTheme.dimensions.cardHeight)
                     .clipped()
-                RatingBadgeView(rating: rating).offset(x: 20, y: 25)
+                RatingBadgeView(rating: rating).offset(
+                    x: themeManager.currentTheme.spacing.large,
+                    y: themeManager.currentTheme.spacing.large
+                )
             }
 
             VStack(alignment: .leading) {
@@ -41,12 +43,12 @@ struct MovieBoxView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .background(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: themeManager.currentTheme.dimensions.cornerRadius)
                 .fill(Color.white)
                 .shadow(color: themeManager.currentTheme.colors.primary.opacity(0.2), radius: 2)
         )
-
-        .frame(height: 330)
+        .frame(height: themeManager.currentTheme.dimensions.movieBoxHeight
+        )
     }
 }
 
@@ -68,11 +70,13 @@ struct RatingBadgeView: View {
                 .blur(radius: 2)
                 .frame(width: 42, height: 42)
                 .rotationEffect(.degrees(-90))
+
             Circle()
                 .trim(from: 0, to: CGFloat(rating / 100))
                 .stroke(themeManager.currentTheme.colors.primary, lineWidth: 3)
                 .frame(width: 42, height: 42)
                 .rotationEffect(.degrees(-90))
+
             Text("\(formattedRating)%")
                 .font(.caption2)
                 .bold()

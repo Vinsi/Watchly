@@ -8,7 +8,6 @@ import TMDBCore
 @testable import Watchly
 import XCTest
 
-var logT = LogWriter(.init(value: "TEST"), attributes: [.prefix, .duration])
 final class DebouncerTests: XCTestCase {
 
     func testDebouncer_ExecutesTaskAfterDelay() async {
@@ -73,27 +72,22 @@ final class DebouncerTests: XCTestCase {
 
         debouncer.config(operation: {
             if $0 == "ca" {
-                logT.logI("ca.just.started")
                 try? await Task.sleep(nanoseconds: 650_000_000)
-                logT.logI("ca")
                 return ["kat", "cat"]
             } else {
                 try? await Task.sleep(nanoseconds: 150_000_000)
-                logT.logI("cat")
                 return ["cat"]
             }
         })
-        logT.logI("ca.started")
+
         debouncer.debounce(input: "ca") { _ in
-            logT.logI("ca.ended")
+
             expectation.fulfill()
         }
-
         try? await Task.sleep(nanoseconds: 500_000_000)
 
-        logT.logI("cat.started")
         debouncer.debounce(input: "cat") { _ in
-            logT.logI("cat.ended")
+
             expectation.fulfill()
         } // Different input should execute
 

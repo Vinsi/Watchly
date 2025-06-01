@@ -39,7 +39,6 @@ final class PagingManager<T: Paginatable> {
 
     func fetchNextPage() async throws {
         guard let viewModel, !viewModel.pageIsLoading, hasMorePages else {
-            logPaging.logW("page.finished.exiting", .success)
             return
         }
         await isFetching(true)

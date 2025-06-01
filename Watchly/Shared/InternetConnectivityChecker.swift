@@ -37,7 +37,6 @@ final class InternetConnectivityCheckerImpl: ObservableObject {
         monitor.pathUpdateHandler = { [weak self] path in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                log.logI("InternetConnected:\(path.status == .satisfied)\(path.status)")
                 self.isConnected = path.status == .satisfied
                 self.connectionType = self.getConnectionType(for: path)
             }

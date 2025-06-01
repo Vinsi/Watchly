@@ -6,10 +6,6 @@
 //
 import TMDBCore
 
-let logPaging = LogWriter(.init(value: "List"))
-let log = LogWriter(.init(value: "TMDB"))
-let logNet = LogWriter(.init(value: "Net"))
-
 import SwiftUI
 
 struct TrendingMovieListView: View {

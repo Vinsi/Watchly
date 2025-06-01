@@ -29,19 +29,25 @@ struct RemoteImage: View {
                         isVisible = true // Triggers animation
                     }
             } else if case .loading = loader.state {
-                LoaderView(color:
-                    DefaultTheme()
-                        .colors
-                        .primary
-                )
+                placeholder
+                    .scaledToFill()
+                    .opacity(0.5)
+                    .overlay {
+                        LoaderView(color:
+                            DefaultTheme()
+                                .colors
+                                .primary
+                        )
+                    }
             } else if case .notStarted = loader.state {
                 EmptyView()
 
             } else if case .completed = loader.state {
-                placeholder
-                    .resizable()
-                    .scaledToFill()
-                    .opacity(0.5)
+                if loader.image == nil {
+                    placeholder
+                        .scaledToFill()
+                        .opacity(0.5)
+                }
             }
         }
         .onAppear {

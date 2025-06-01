@@ -9,16 +9,26 @@ import TMDBCore
 
 struct DeviceLayout {
     let iphonePortrait = 2
-    let iphoneLandscape = 4
     let ipadportrait = 4
-    let ipadLandscape = 6
 }
 
 struct ItemListView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     let movies: [any ListViewDataType]
     var onTap: ((ListViewDataType) -> Void)?
     var onAppear5thLastElement: (() -> Void)?
-    private let width = (UIScreen.main.bounds.width - (3 * 8)) * 0.5
+//    private var width: CGFloat {
+//        func length(count: Int, padding: CGFloat) -> CGFloat {
+//            (UIScreen.main.bounds.width - (CGFloat(count) + 1 * padding)) * 0.5
+//        }
+//        if horizontalSizeClass == .compact {
+//            return length(count: 2, padding: 8)
+//        } else {
+//            return length(count: 4, padding: 8)
+//        }
+//    }
+
     @ViewBuilder
     private func cell(_ movie: ListViewDataType) -> some View {
         MovieBoxView(
@@ -26,20 +36,23 @@ struct ItemListView: View {
             title: movie.title,
             releaseDate: movie.releaseDate,
             rating: movie.voteAverage * 10,
-            width: width * 0.99
+            width: 1 * 0.99
         )
         .accessibilityLabel("moviebox")
     }
 
+    var columns: [GridItem] {
+        if horizontalSizeClass == .compact {
+            return Array(repeating: GridItem(.flexible()), count: 2)
+        } else {
+            return Array(repeating: GridItem(.flexible()), count: 4)
+        }
+    }
+
     var body: some View {
         ScrollView {
-            var items: [GridItem] {
 
-                [GridItem(.fixed(width), spacing: 8),
-                 GridItem(.fixed(width), spacing: 8)]
-            }
-
-            LazyVGrid(columns: items, spacing: 8) {
+            LazyVGrid(columns: columns, spacing: 8) {
                 ForEach(movies.indices, id: \.self) { index in
                     let movie = movies[index]
                     cell(movie)

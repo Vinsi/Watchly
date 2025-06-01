@@ -56,7 +56,7 @@ struct Dimensions {
     let thumbSize: CGSize
     let cardHeight: CGFloat
     let shortBannerHeight: CGFloat
-
+    let movieBoxHeight: CGFloat
     init(
         buttonHeight: CGFloat = 44,
         buttonWidth: CGFloat = 200,
@@ -67,6 +67,7 @@ struct Dimensions {
         thumbSize: CGSize = CGSize(width: 80, height: 80),
         imageAspectRatio: CGFloat = 16 / 9,
         cardHeight: CGFloat = 250,
+        movieBoxHeight: CGFloat = 330,
         shortBannerHeight: CGFloat = 20
     ) {
         self.buttonHeight = buttonHeight
@@ -79,6 +80,7 @@ struct Dimensions {
         self.imageAspectRatio = imageAspectRatio
         self.cardHeight = cardHeight
         self.shortBannerHeight = shortBannerHeight
+        self.movieBoxHeight = movieBoxHeight
     }
 }
 

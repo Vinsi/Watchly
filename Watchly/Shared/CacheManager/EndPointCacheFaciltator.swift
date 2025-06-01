@@ -15,10 +15,8 @@ final class EndPointCacheFaciltator<T: EndPointType> {
 
     func executeWithCache(endPoint: T, network: NetworkProcesserType) async throws -> T.Response {
         if let object = await cache.getValue(forKey: endPoint.cacheKey) {
-            logNet.logI("response.from.cache")
             return object
         } else {
-            logNet.logI("response.from.network")
             let object = try await network.request(from: endPoint)
             await cache.setValue(object, forKey: endPoint.cacheKey)
             return object

@@ -19,7 +19,6 @@ final class SearchViewModel: ObservableObject, @preconcurrency NavigationSupport
     @Published var isLoading: Bool = false
     @Published var searchText: String = "" {
         didSet {
-            log.logI("search.text.query?\(searchText)")
             search(searchText)
         }
     }
@@ -42,7 +41,6 @@ final class SearchViewModel: ObservableObject, @preconcurrency NavigationSupport
     }
 
     func search(_ query: String) {
-        log.logI("search.started")
         debouncer.debounce(input: query) { [weak self] result in
             switch result {
             case .success(let movies):

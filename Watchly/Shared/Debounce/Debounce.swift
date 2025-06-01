@@ -47,15 +47,13 @@ final class AsyncDebouncer<Input: Equatable, Output> {
                 let result = try await operation(input)
                 guard requestID == self.lastUUID
                 else {
-                    log.logW("Stale response ignored")
                     return
                 }
                 await onCompletion(.success(result))
             } catch is CancellationError {
-                log.logE("CancellationError", .failure)
+
             } catch {
                 if error.localizedDescription != "cancelled" {
-                    log.logE(error.localizedDescription, .failure)
                     await onCompletion(.failure(error))
                 }
             }
