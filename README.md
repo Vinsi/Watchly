@@ -1,5 +1,8 @@
 # 📽️ Watchly – TMDB Movie App
 
+![Platform](https://img.shields.io/badge/platform-iOS-blue.svg)
+![Swift](https://img.shields.io/badge/swift-5.0-orange.svg)
+
 **Watchly** is a modern, modular iOS app built using **Swift**, **SwiftUI**, and **async/await**. It interacts with **The Movie Database (TMDB)** to showcase trending movies, detailed views, and favorites. The architecture is clean, testable, and cross-platform ready with a reusable **XCFramework**.
 
 ## 📸 Screenshots
