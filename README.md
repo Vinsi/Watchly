@@ -22,7 +22,7 @@
 - ✅ 🌐 **Retry mechanism** on network failure (e.g. no internet)
 - ✅ 🧩 UIKit integration example — **SwiftUI + UIKit interop demo**
 - ✅ ✅ Uses **async/await only** — no Combine dependency
-- ✅ 🧪 50% **unit test coverage**
+- ✅ 🧪 50% **unit test coverage** > 80% with UI Automation
 
 ---
 
@@ -93,6 +93,7 @@ Features/
 
 ## 🧰 Tools & Tech
 
+- Min Depolyment Target 16.6
 - Swift 5.9+
 - SwiftUI + UIKit (interoperability)
 - XCTest / XCUITest
