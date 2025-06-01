@@ -37,7 +37,8 @@ final class AsyncDebouncer<Input: Equatable, Output> {
         let requestID = UUID()
         lastUUID = requestID
 
-        currentTask = Task {
+        currentTask = Task { [weak self] in
+            guard let self else { return }
             do {
                 try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
                 guard !Task.isCancelled else { return }

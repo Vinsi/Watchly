@@ -17,22 +17,6 @@
         }
       }
     },
-    "Add to favorites" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add to Favourites"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajouter aux favoris"
-          }
-        }
-      }
-    },
     "budget" : {
       "localizations" : {
         "en" : {
@@ -225,6 +209,9 @@
         }
       }
     },
+    "moviebox" : {
+
+    },
     "no_internet_connection" : {
       "localizations" : {
         "en" : {
@@ -285,22 +272,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Date de sortie"
-          }
-        }
-      }
-    },
-    "Remove from favorites" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove from favorites"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Remove from favorites"
           }
         }
       }

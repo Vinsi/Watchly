@@ -1,0 +1,70 @@
+# === Xcode build artifacts ===
+build/
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# === User data ===
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# === macOS system files ===
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# === Swift Package Manager ===
+.swiftpm/
+.build/
+
+# === CocoaPods ===
+Pods/
+Podfile.lock
+
+# === Carthage ===
+Carthage/
+Cartfile.resolved
+
+# === Fastlane ===
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
+fastlane/.env
+.env
+
+# === Firebase Crashlytics ===
+*.dSYM.zip
+*.dSYM
+
+# === Archives ===
+*.xcarchive
+
+# === Symbolication ===
+*.symbolicated
+
+# === Logs ===
+*.log
+
+# === Temporary files ===
+*.tmp
+*.swp
+*~.nib
+
+# === SwiftPM Plugin cache ===
+.swiftpm/xcode/package.xcworkspace/xcuserdata/
+
+# === Playground auto-save ===
+timeline.xctimeline
+playground.xcworkspace
+
+# === SwiftLint cache ===
+.swiftlint.yml
+.swiftlint.cache
+
+# === Xcode Preview ===
+.previews/
+
+# === Tuist ===
+Tuist/Dependencies/
+Tuist/Generated/

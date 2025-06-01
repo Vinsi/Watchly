@@ -14,43 +14,43 @@
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<data>
-		Qjp2+A8jsoVVqtWYDtijxE54zc4=
+		Ec8XAZahJYK//TeJ3pOlvkaWsb4=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
-		vdGEZ+anyFHF+b92pxYQ4zctMJg=
+		h+CBG9lgLpTKEnLR+ldYqS8qzms=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
 		<data>
-		hNLi32HBxWEFrPxu3+UvI6woMAM=
+		uGtFbTHnTXgIHN795nG9vhxWM9M=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.swiftinterface</key>
 		<data>
-		vdGEZ+anyFHF+b92pxYQ4zctMJg=
+		h+CBG9lgLpTKEnLR+ldYqS8qzms=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		jDVikI8XZWs5TrYfKPlLClvgB0Y=
+		00+plLEJgulQ1A6czh31kBd6ZQk=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<data>
-		Qjp2+A8jsoVVqtWYDtijxE54zc4=
+		Ec8XAZahJYK//TeJ3pOlvkaWsb4=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
-		/el2avb1CBvIBEXJqtSCMvFUh+g=
+		O3AOx8sJHbY/bORJTIXQoTM41Vk=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<data>
-		U+o094p5/kEO2Wrm7p/fpbPU+KQ=
+		lpLwJFXqoqbRGnGuIvvGpnER08U=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.swiftinterface</key>
 		<data>
-		/el2avb1CBvIBEXJqtSCMvFUh+g=
+		O3AOx8sJHbY/bORJTIXQoTM41Vk=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		JkSwB0JC3TILq5123q18fSJj8zc=
+		fm62arEb7XYd27VA/sLPYZKpvqc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,70 +70,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Py5Q9dIv/UvIBzYIhesoxw1L86plnFnWc8TmebXppC4=
+			sK5V37QPUE8PHiFQpXvCiWV3rSepKugwDGXKWRA674g=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Y5wTJnaAZ76AJxiJFnyeFHtcm0N+tlm6rY9Dv2zu7eA=
+			LuIx5BZ5pU3d9si39qrTTVJphovNv2dnp1S+h3mg+ko=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			88bpiAQZa2rVjDO4kwFDNRxbuloDqyWIAqFXnsn79PA=
+			+SCT4AktCyIRFnnzn7VSiDIqPNukg9vd3OXqDgMuEvM=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Y5wTJnaAZ76AJxiJFnyeFHtcm0N+tlm6rY9Dv2zu7eA=
+			LuIx5BZ5pU3d9si39qrTTVJphovNv2dnp1S+h3mg+ko=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cIkaDSP/YUlawnrp7tZu79krfkUDmTjDZMBUxmG5Blg=
+			s7pWgVF/klsCzetJMdHsndDhj+mi2plQYb0Ai4I6U2k=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Py5Q9dIv/UvIBzYIhesoxw1L86plnFnWc8TmebXppC4=
+			sK5V37QPUE8PHiFQpXvCiWV3rSepKugwDGXKWRA674g=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			63URAHiCGOs0hjAyIzKO0rjbhuvP0u8XsmK/eQFmr60=
+			/2fJe4ViDp7RORSH/aRclpRhRsmjKXY1Hl8ZNGKBOQk=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HFQTuW7ZuOg8TqVu14MyQhKIS6aaAvYWwS5Z6C7/81s=
+			LqquO2LT0rDdE8HZfma2+OqG7DYxKEuf+WcU+1OJ+YY=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			63URAHiCGOs0hjAyIzKO0rjbhuvP0u8XsmK/eQFmr60=
+			/2fJe4ViDp7RORSH/aRclpRhRsmjKXY1Hl8ZNGKBOQk=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UcQ7SK5AALZB9DwoRVwps192yAc3q51rdkE6vRW1/7w=
+			VNzUyIuBGyWrG+6JsEt2JiGpeOk2hWXsxuGaB5SI0ZE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

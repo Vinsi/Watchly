@@ -7,7 +7,7 @@
 import TMDBCore
 
 extension Movie {
-    static func mock(
+    static func stub(
         id: Int = 1,
         title: String = "Mock Movie",
         originalTitle: String = "Mock Original Title",

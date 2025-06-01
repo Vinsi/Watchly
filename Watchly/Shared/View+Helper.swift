@@ -18,7 +18,7 @@ struct AppBackground: View {
     var body: some View {
         Image(themeManager.currentTheme.images.pattern)
             .resizable(resizingMode: .tile)
-            .opacity(0.1)
+            .opacity(0.03)
     }
 }
 

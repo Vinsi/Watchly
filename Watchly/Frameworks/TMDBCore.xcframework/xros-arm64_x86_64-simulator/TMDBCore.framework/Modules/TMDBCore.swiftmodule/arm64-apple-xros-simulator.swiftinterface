@@ -48,11 +48,6 @@ public struct MovieDetailEndPoint : TMDBCore.EndPointType {
   public let request: TMDBCore.RequestBuilder
   public init(baseURL: Swift.String, token: Swift.String, id: Swift.Int, page: Swift.Int = 0)
 }
-public struct MovieGenreEndpoint : TMDBCore.EndPointType {
-  public let request: TMDBCore.RequestBuilder
-  public typealias Response = TMDBCore.GenreListResponse
-  public init(baseURL: Swift.String, token: Swift.String)
-}
 public struct SearchMoviesEndPoint : TMDBCore.EndPointType {
   public let request: TMDBCore.RequestBuilder
   public typealias Response = TMDBCore.SearchResultsResponse
@@ -138,12 +133,6 @@ public enum LoggerStatus : Swift.String {
 }
 public enum LogWriterSettings {
   public static var globalLevel: TMDBCore.LogWriter.Levels
-}
-public struct GenreListResponse : Swift.Codable {
-  public let genres: [TMDBCore.Genre]
-  public init(genres: [TMDBCore.Genre])
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
 }
 public enum TMDBImageSize : Swift.String {
   case w92, w154, w185, w342, w500, w780, original
@@ -352,6 +341,7 @@ public struct MovieDetails : Swift.Codable, Swift.Equatable {
       get
     }
   }
+  public init(id: Swift.Int, title: Swift.String, originalTitle: Swift.String, overview: Swift.String, tagline: Swift.String? = nil, status: Swift.String, runtime: Swift.Int? = nil, releaseDate: Swift.String, voteAverage: Swift.Double, voteCount: Swift.Int, popularity: Swift.Double, adult: Swift.Bool, video: Swift.Bool, originalLanguage: Swift.String, homepage: Swift.String? = nil, imdbID: Swift.String? = nil, posterPath: TMDBCore.TMDBImage? = nil, backdropPath: TMDBCore.TMDBImage? = nil, budget: Swift.Int? = nil, revenue: Swift.Int? = nil, genres: [TMDBCore.Genre], spokenLanguages: [TMDBCore.SpokenLanguage], productionCompanies: [TMDBCore.ProductionCompany], productionCountries: [TMDBCore.ProductionCountry], originCountry: [Swift.String]? = nil, belongsToCollection: TMDBCore.BelongsToCollection? = nil)
   public static func == (a: TMDBCore.MovieDetails, b: TMDBCore.MovieDetails) -> Swift.Bool
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws

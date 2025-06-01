@@ -20,7 +20,6 @@ struct SearchView: View {
     }
 
     var body: some View {
-//        NavigationView {
         VStack {
             ZStack {
                 AppBackground()
@@ -38,16 +37,16 @@ struct SearchView: View {
                     Spacer()
 
                     if case .success(let movies) = viewModel.dataState {
-                        MoviesListView(
+                        ItemListView(
                             movies: movies,
-                            onTap: viewModel.onSelect(_:)
+                            onTap: viewModel.onSelect(_:),
+                            onAppear5thLastElement: nil
                         )
                     }
                 }
             }
         }
 
-//        .navigationBarTitleDisplayMode(.inline)
         .onChange(of: viewModel.dataState, perform: { newValue in
             if case .failure(let error) = newValue, let appError = error as? AppError {
 
@@ -64,7 +63,6 @@ struct SearchView: View {
                 }
             }
         }
-//        }
 
         .errorAlert(
             isPresented: $hasError,
@@ -82,12 +80,13 @@ struct SearchView: View {
 
 // MARK: - 🛠 Preview
 
-// TODO: - Fix me
-// #Preview {
-//    SearchView(useCase: MovieSearchUseCaseImpl(service:
-//                                                mockBreadSearchServiceImpl(dictionary: ["." : [.mock()]])
-//                                              ))
-//    .environmentObject(AppEnvironment.shared)
-//    .environmentObject(Router())
-//    .environmentObject(ThemeManager())
-// }
+import TMDBCore
+
+#Preview {
+    SearchView(useCase: MovieSearchUseCaseImpl(service:
+        MockSearchServiceImpl()
+    ))
+    .environmentObject(AppEnvironment.shared)
+    .environmentObject(Router())
+    .environmentObject(ThemeManager())
+}

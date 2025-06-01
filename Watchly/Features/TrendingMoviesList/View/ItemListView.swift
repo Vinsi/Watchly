@@ -28,6 +28,7 @@ struct ItemListView: View {
             rating: movie.voteAverage * 10,
             width: width * 0.99
         )
+        .accessibilityLabel("moviebox")
     }
 
     var body: some View {
@@ -60,7 +61,7 @@ struct ItemListView: View {
 }
 
 #Preview {
-    ItemListView(movies: [Movie.mock(), Movie.mock(id: 2)])
+    ItemListView(movies: [Movie.stub(), Movie.stub(id: 2)])
         .frame(width: 160)
         .environmentObject(ThemeManager())
 }

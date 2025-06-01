@@ -32,7 +32,9 @@ struct TrendingMovieListView: View {
                     movies: viewModel.viewData,
                     onTap: viewModel.onSelect(_:),
                     onAppear5thLastElement: { [weak viewModel] in
-                        viewModel?.loadMore()
+                        Task { [weak viewModel] in
+                            await viewModel?.loadMore()
+                        }
                     }
                 )
 
@@ -44,10 +46,14 @@ struct TrendingMovieListView: View {
             .background(AppBackground())
         }
         .refreshable {
-            viewModel.loadFromStart()
+            Task { [weak viewModel] in
+                await viewModel?.loadFromStart()
+            }
         }
         .onAppear {
-            viewModel.initialFetch()
+            Task { [weak viewModel] in
+                await viewModel?.initialFetch()
+            }
         }
         .task {
             viewModel.setNavigationEventCallBack { [weak router] event in
@@ -71,7 +77,7 @@ struct TrendingMovieListView: View {
 }
 
 #Preview {
-    TrendingMovieListView(useCase: GetTrendingMoviesUseCaseImpl(service: MockTrendingMoviesListServiceType()))
+    TrendingMovieListView(useCase: GetTrendingMoviesUseCaseImpl(service: MockTrendingMoviesListServiceImpl()))
         .environmentObject(AppEnvironment.shared)
         .environmentObject(Router())
         .environmentObject(ThemeManager())

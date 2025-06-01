@@ -38,7 +38,7 @@ struct MovieDetailView: View {
                 EmptyView()
             }
         }.task {
-            viewModel.fetchDetails()
+            await viewModel.fetchDetails()
         }
         .navigationTitle(Localized.detailTitle)
         .navigationBarTitleDisplayMode(.inline)
@@ -94,7 +94,9 @@ extension DetailSection {
                 .frame(height: 250)
                 .clipped()
 
-            FavoritesButton(movieID: movieID).padding([.bottom, .trailing], theme.spacing.medium)
+            FavoritesButtonSwiftUI(movieID: movieID)
+                .square(size: theme.dimensions.iconSize)
+                .padding([.bottom, .trailing], theme.spacing.medium)
         }
     }
 

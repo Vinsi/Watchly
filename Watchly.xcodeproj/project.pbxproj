@@ -40,6 +40,7 @@
 		1509D0882DE76B4A0075E9F4 /* Watchly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1509D0982DE76B4C0075E9F4 /* WatchlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1509D0A22DE76B4C0075E9F4 /* WatchlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15A143292DECB30900E1A238 /* Development.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Development.xctestplan; path = ../Development.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -115,6 +116,7 @@
 		1509D07F2DE76B4A0075E9F4 = {
 			isa = PBXGroup;
 			children = (
+				15A143292DECB30900E1A238 /* Development.xctestplan */,
 				1509D08A2DE76B4A0075E9F4 /* Watchly */,
 				1509D09B2DE76B4C0075E9F4 /* WatchlyTests */,
 				1509D0A52DE76B4C0075E9F4 /* WatchlyUITests */,
@@ -276,6 +278,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		156FEDC62DE8FB0E00E9A3A0 /* FormatCode */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

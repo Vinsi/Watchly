@@ -34,12 +34,3 @@ struct MovieSearchServiceImpl: SearchServiceType {
         return try await cacheFacilitator.executeWithCache(endPoint: endPoint, network: network)
     }
 }
-
-// TODO: - Fix me
-
-// struct mockSearchServiceImpl: SearchServiceType {
-//    let dictionary: [String: SearchResultsResponse ]
-//    func search(query: String) async throws -> SearchResultsResponse {
-//        dictionary[query]
-//    }
-// }

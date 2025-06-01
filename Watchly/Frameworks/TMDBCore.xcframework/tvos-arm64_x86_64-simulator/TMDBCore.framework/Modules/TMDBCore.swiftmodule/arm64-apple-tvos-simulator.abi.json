@@ -970,138 +970,6 @@
       },
       {
         "kind": "TypeDecl",
-        "name": "MovieGenreEndpoint",
-        "printedName": "MovieGenreEndpoint",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "request",
-            "printedName": "request",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "RequestBuilder",
-                "printedName": "TMDBCore.RequestBuilder",
-                "usr": "s:8TMDBCore14RequestBuilderC"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:8TMDBCore18MovieGenreEndpointV7requestAA14RequestBuilderCvp",
-            "mangledName": "$s8TMDBCore18MovieGenreEndpointV7requestAA14RequestBuilderCvp",
-            "moduleName": "TMDBCore",
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage",
-              "AccessControl"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "RequestBuilder",
-                    "printedName": "TMDBCore.RequestBuilder",
-                    "usr": "s:8TMDBCore14RequestBuilderC"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8TMDBCore18MovieGenreEndpointV7requestAA14RequestBuilderCvg",
-                "mangledName": "$s8TMDBCore18MovieGenreEndpointV7requestAA14RequestBuilderCvg",
-                "moduleName": "TMDBCore",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(baseURL:token:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "MovieGenreEndpoint",
-                "printedName": "TMDBCore.MovieGenreEndpoint",
-                "usr": "s:8TMDBCore18MovieGenreEndpointV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TMDBCore18MovieGenreEndpointV7baseURL5tokenACSS_SStcfc",
-            "mangledName": "$s8TMDBCore18MovieGenreEndpointV7baseURL5tokenACSS_SStcfc",
-            "moduleName": "TMDBCore",
-            "declAttributes": [
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "init_kind": "Designated"
-          }
-        ],
-        "declKind": "Struct",
-        "usr": "s:8TMDBCore18MovieGenreEndpointV",
-        "mangledName": "$s8TMDBCore18MovieGenreEndpointV",
-        "moduleName": "TMDBCore",
-        "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "EndPointType",
-            "printedName": "EndPointType",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "Response",
-                "printedName": "Response",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenreListResponse",
-                    "printedName": "TMDBCore.GenreListResponse",
-                    "usr": "s:8TMDBCore17GenreListResponseV"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:8TMDBCore12EndPointTypeP",
-            "mangledName": "$s8TMDBCore12EndPointTypeP"
-          }
-        ]
-      },
-      {
-        "kind": "TypeDecl",
         "name": "SearchMoviesEndPoint",
         "printedName": "SearchMoviesEndPoint",
         "children": [
@@ -3846,197 +3714,6 @@
             "printedName": "Escapable",
             "usr": "s:s9EscapableP",
             "mangledName": "$ss9EscapableP"
-          }
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "GenreListResponse",
-        "printedName": "GenreListResponse",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "genres",
-            "printedName": "genres",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[TMDBCore.Genre]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Genre",
-                    "printedName": "TMDBCore.Genre",
-                    "usr": "s:8TMDBCore5GenreV"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:8TMDBCore17GenreListResponseV6genresSayAA0B0VGvp",
-            "mangledName": "$s8TMDBCore17GenreListResponseV6genresSayAA0B0VGvp",
-            "moduleName": "TMDBCore",
-            "declAttributes": [
-              "HasStorage",
-              "AccessControl"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[TMDBCore.Genre]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Genre",
-                        "printedName": "TMDBCore.Genre",
-                        "usr": "s:8TMDBCore5GenreV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8TMDBCore17GenreListResponseV6genresSayAA0B0VGvg",
-                "mangledName": "$s8TMDBCore17GenreListResponseV6genresSayAA0B0VGvg",
-                "moduleName": "TMDBCore",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(genres:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "GenreListResponse",
-                "printedName": "TMDBCore.GenreListResponse",
-                "usr": "s:8TMDBCore17GenreListResponseV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[TMDBCore.Genre]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Genre",
-                    "printedName": "TMDBCore.Genre",
-                    "usr": "s:8TMDBCore5GenreV"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TMDBCore17GenreListResponseV6genresACSayAA0B0VG_tcfc",
-            "mangledName": "$s8TMDBCore17GenreListResponseV6genresACSayAA0B0VG_tcfc",
-            "moduleName": "TMDBCore",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(from:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "GenreListResponse",
-                "printedName": "TMDBCore.GenreListResponse",
-                "usr": "s:8TMDBCore17GenreListResponseV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Decoder",
-                "printedName": "any Swift.Decoder",
-                "usr": "s:s7DecoderP"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8TMDBCore17GenreListResponseV4fromACs7Decoder_p_tKcfc",
-            "mangledName": "$s8TMDBCore17GenreListResponseV4fromACs7Decoder_p_tKcfc",
-            "moduleName": "TMDBCore",
-            "implicit": true,
-            "throwing": true,
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Function",
-            "name": "encode",
-            "printedName": "encode(to:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Encoder",
-                "printedName": "any Swift.Encoder",
-                "usr": "s:s7EncoderP"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8TMDBCore17GenreListResponseV6encode2toys7Encoder_p_tKF",
-            "mangledName": "$s8TMDBCore17GenreListResponseV6encode2toys7Encoder_p_tKF",
-            "moduleName": "TMDBCore",
-            "implicit": true,
-            "throwing": true,
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Struct",
-        "usr": "s:8TMDBCore17GenreListResponseV",
-        "mangledName": "$s8TMDBCore17GenreListResponseV",
-        "moduleName": "TMDBCore",
-        "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Decodable",
-            "printedName": "Decodable",
-            "usr": "s:Se",
-            "mangledName": "$sSe"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Encodable",
-            "printedName": "Encodable",
-            "usr": "s:SE",
-            "mangledName": "$sSE"
           }
         ]
       },
@@ -11215,6 +10892,313 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(id:title:originalTitle:overview:tagline:status:runtime:releaseDate:voteAverage:voteCount:popularity:adult:video:originalLanguage:homepage:imdbID:posterPath:backdropPath:budget:revenue:genres:spokenLanguages:productionCompanies:productionCountries:originCountry:belongsToCollection:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MovieDetails",
+                "printedName": "TMDBCore.MovieDetails",
+                "usr": "s:8TMDBCore12MovieDetailsV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TMDBCore.TMDBImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMDBImage",
+                    "printedName": "TMDBCore.TMDBImage",
+                    "usr": "s:8TMDBCore9TMDBImageV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TMDBCore.TMDBImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMDBImage",
+                    "printedName": "TMDBCore.TMDBImage",
+                    "usr": "s:8TMDBCore9TMDBImageV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[TMDBCore.Genre]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Genre",
+                    "printedName": "TMDBCore.Genre",
+                    "usr": "s:8TMDBCore5GenreV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[TMDBCore.SpokenLanguage]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SpokenLanguage",
+                    "printedName": "TMDBCore.SpokenLanguage",
+                    "usr": "s:8TMDBCore14SpokenLanguageV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[TMDBCore.ProductionCompany]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProductionCompany",
+                    "printedName": "TMDBCore.ProductionCompany",
+                    "usr": "s:8TMDBCore17ProductionCompanyV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[TMDBCore.ProductionCountry]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProductionCountry",
+                    "printedName": "TMDBCore.ProductionCountry",
+                    "usr": "s:8TMDBCore17ProductionCountryV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TMDBCore.BelongsToCollection?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BelongsToCollection",
+                    "printedName": "TMDBCore.BelongsToCollection",
+                    "usr": "s:8TMDBCore19BelongsToCollectionV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8TMDBCore12MovieDetailsV2id5title13originalTitle8overview7tagline6status7runtime11releaseDate11voteAverage0N5Count10popularity5adult5video0F8Language8homepage6imdbID10posterPath08backdropY06budget7revenue6genres15spokenLanguages19productionCompanies19productionCountries13originCountry19belongsToCollectionACSi_S4SSgSSSiSgSSSdSiSdS2bSSA2_A2_AA9TMDBImageVSgA6_A3_A3_SayAA5GenreVGSayAA06SpokenT0VGSayAA17ProductionCompanyVGSayAA17ProductionCountryVGSaySSGSgAA19BelongsToCollectionVSgtcfc",
+            "mangledName": "$s8TMDBCore12MovieDetailsV2id5title13originalTitle8overview7tagline6status7runtime11releaseDate11voteAverage0N5Count10popularity5adult5video0F8Language8homepage6imdbID10posterPath08backdropY06budget7revenue6genres15spokenLanguages19productionCompanies19productionCountries13originCountry19belongsToCollectionACSi_S4SSgSSSiSgSSSdSiSdS2bSSA2_A2_AA9TMDBImageVSgA6_A3_A3_SayAA5GenreVGSayAA06SpokenT0VGSayAA17ProductionCompanyVGSayAA17ProductionCountryVGSaySSGSgAA19BelongsToCollectionVSgtcfc",
+            "moduleName": "TMDBCore",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(from:)",
             "children": [
               {
@@ -16791,140 +16775,140 @@
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 3666,
+      "offset": 611,
       "length": 14,
       "value": "\"english_name\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 3704,
+      "offset": 649,
       "length": 11,
       "value": "\"iso_639_1\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 4279,
+      "offset": 1224,
       "length": 11,
       "value": "\"logo_path\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 4320,
+      "offset": 1265,
       "length": 16,
       "value": "\"origin_country\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 4831,
+      "offset": 1776,
       "length": 12,
       "value": "\"iso_3166_1\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 5353,
+      "offset": 2298,
       "length": 13,
       "value": "\"poster_path\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 5395,
+      "offset": 2340,
       "length": 15,
       "value": "\"backdrop_path\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 6824,
+      "offset": 3769,
       "length": 16,
       "value": "\"original_title\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 6868,
+      "offset": 3813,
       "length": 14,
       "value": "\"release_date\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 6910,
+      "offset": 3855,
       "length": 14,
       "value": "\"vote_average\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 6950,
+      "offset": 3895,
       "length": 12,
       "value": "\"vote_count\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 6995,
+      "offset": 3940,
       "length": 19,
       "value": "\"original_language\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 7059,
+      "offset": 4004,
       "length": 9,
       "value": "\"imdb_id\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 7095,
+      "offset": 4040,
       "length": 13,
       "value": "\"poster_path\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 7137,
+      "offset": 4082,
       "length": 15,
       "value": "\"backdrop_path\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 7204,
+      "offset": 4149,
       "length": 18,
       "value": "\"spoken_languages\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 7258,
+      "offset": 4203,
       "length": 22,
       "value": "\"production_companies\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 7316,
+      "offset": 4261,
       "length": 22,
       "value": "\"production_countries\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 7368,
+      "offset": 4313,
       "length": 16,
       "value": "\"origin_country\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/MovieDetails.swift",
       "kind": "StringLiteral",
-      "offset": 7420,
+      "offset": 4365,
       "length": 23,
       "value": "\"belongs_to_collection\""
     },
@@ -16959,77 +16943,77 @@
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 1829,
+      "offset": 420,
       "length": 13,
       "value": "\"total_pages\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 1871,
+      "offset": 462,
       "length": 15,
       "value": "\"total_results\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2782,
+      "offset": 1373,
       "length": 16,
       "value": "\"original_title\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2847,
+      "offset": 1438,
       "length": 13,
       "value": "\"poster_path\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2889,
+      "offset": 1480,
       "length": 15,
       "value": "\"backdrop_path\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2930,
+      "offset": 1521,
       "length": 12,
       "value": "\"media_type\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2967,
+      "offset": 1558,
       "length": 11,
       "value": "\"genre_ids\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3006,
+      "offset": 1597,
       "length": 14,
       "value": "\"release_date\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3048,
+      "offset": 1639,
       "length": 14,
       "value": "\"vote_average\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3088,
+      "offset": 1679,
       "length": 12,
       "value": "\"vote_count\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TrendingMoviesResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3176,
+      "offset": 1767,
       "length": 19,
       "value": "\"original_language\""
     },

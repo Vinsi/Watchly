@@ -37,42 +37,37 @@ final class TrendingMovieListViewModel: ObservableObject {
         self.useCase = useCase
     }
 
-    func loadFromStart() {
+    func loadFromStart() async {
         pagingManager.reset()
-        Task { [weak self] in
-            await self?.fetch()
-        }
+        await fetch()
     }
 
-    func initialFetch() {
+    func initialFetch() async {
         guard viewData.isEmpty else {
             return
         }
-        pagingManager.reset()
-        Task { [weak self] in
-            await self?.fetch()
+        await MainActor.run {
+            pagingManager.reset()
         }
+        await fetch()
     }
 
-    func loadMore() {
-        Task { [weak self] in
-            await self?.fetch()
-        }
+    func loadMore() async {
+        await fetch()
     }
 
     func onSelect(_ viewData: ListViewDataType) {
         onNavigation?(.details(id: viewData.movieID))
     }
 
-    @MainActor
-    private func fetch() {
-        Task { [weak self] in
-            do {
-                self?.hideError()
-                try await self?.pagingManager.fetchNextPage()
-            } catch {
-                self?.errorMessage = error.localizedDescription
-                self?.showError()
+    private func fetch() async {
+        do {
+            await hideError()
+            try await pagingManager.fetchNextPage()
+        } catch {
+            await MainActor.run {
+                errorMessage = error.localizedDescription
+                showError()
             }
         }
     }
