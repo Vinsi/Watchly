@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import TMDBCore
 
 @MainActor
-final class SearchViewModel: ObservableObject {
+final class SearchViewModel: ObservableObject, @preconcurrency NavigationSupportable {
+
     enum NavigationEvent: Equatable {
         case detail(movieID: Int)
     }
@@ -22,9 +24,9 @@ final class SearchViewModel: ObservableObject {
         }
     }
 
-    @Published var navigation: NavigationEvent?
     private let useCase: MovieSearchUseCaseType
     private let debouncer = AsyncDebouncer<String, [Movie]>(delay: 0.3)
+    var navigationEventCallBack: ((NavigationEvent) -> Void)?
 
     init(useCase: MovieSearchUseCaseType) {
         self.useCase = useCase
@@ -61,6 +63,17 @@ final class SearchViewModel: ObservableObject {
     }
 
     func onSelect(_ viewData: ListViewDataType) {
-        navigation = .detail(movieID: viewData.movieID)
+        navigationEventCallBack?(.detail(movieID: viewData.movieID))
+    }
+}
+
+protocol NavigationSupportable: AnyObject {
+    var navigationEventCallBack: ((NavigationEvent) -> Void)? { get set }
+    associatedtype NavigationEvent: Equatable
+}
+
+extension NavigationSupportable {
+    func setNavigationEventCallBack(on callback: @escaping (NavigationEvent) -> Void) {
+        navigationEventCallBack = callback
     }
 }

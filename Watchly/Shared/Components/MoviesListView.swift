@@ -5,6 +5,7 @@
 //  Created by Vinsi.
 //
 import SwiftUI
+import TMDBCore
 
 struct MoviesListView: View {
     @EnvironmentObject var router: Router
@@ -14,7 +15,7 @@ struct MoviesListView: View {
     var onAppear5thLastElement: (() -> Void)?
     var body: some View {
         List(movies, id: \.movieID) { movie in
-            MovieCell(
+            MovieCardView(
                 viewData: movie,
                 theme: themeManager.currentTheme
             )
@@ -40,7 +41,7 @@ struct MoviesListView: View {
         .environmentObject(ThemeManager())
 }
 
-private extension [any ListViewDataType] {
+extension [any ListViewDataType] {
     func lastNthItem(is object: Element, nthIndex: Int) -> Bool {
         suffix(nthIndex).first?.movieID == object.movieID
     }

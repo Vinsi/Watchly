@@ -5,6 +5,7 @@
 //  Created by Vinsi on 29/05/2025.
 //
 import Foundation
+import TMDBCore
 
 enum AppError: LocalizedError, Equatable {
     case network(description: String)
@@ -35,11 +36,13 @@ enum AppError: LocalizedError, Equatable {
     }
 
     static func from(_ error: Error) -> AppError {
-        if let urlError = error as? URLError {
+        if let error = error as? AppError {
+            return error
+        } else if let urlError = error as? URLError {
             return .network(description: urlError.localizedDescription)
         } else if let decodingError = error as? DecodingError {
             return .decoding(description: decodingError.localizedDescription)
-        } else if let serverError = error as? IMDBServerError {
+        } else if let serverError = error as? TMDBServerError {
             return .server(message: serverError.model.statusMessage, code: serverError.model.statusCode)
         } else if (error as NSError).code == 401 {
             return .unauthorized

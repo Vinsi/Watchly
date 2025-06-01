@@ -5,6 +5,7 @@
 //  Created by Vinsi.
 //
 import Foundation
+import TMDBCore
 
 /// 🐱 **ViewModel for Managing Movie List**
 /// - Handles data fetching, pagination, and error states.
@@ -13,14 +14,16 @@ import Foundation
 final class TrendingMovieListViewModel: ObservableObject {
 
     enum NavigationEvent: Equatable {
-        case details(id: String)
+        case details(id: Int)
     }
 
     /// 🏗 **Published Properties for UI Updates**
     @Published var pageIsLoading = false
     @Published private(set) var viewData: [ListViewDataType] = []
-    @Published private(set) var navigation: NavigationEvent?
+
     @Published var isError: Bool = false
+    private var onNavigation: ((NavigationEvent) -> Void)?
+
     private(set) var errorMessage: String?
 
     /// 📌 **Dependencies**
@@ -58,8 +61,7 @@ final class TrendingMovieListViewModel: ObservableObject {
     }
 
     func onSelect(_ viewData: ListViewDataType) {
-
-        navigation = .details(id: "")
+        onNavigation?(.details(id: viewData.movieID))
     }
 
     @MainActor
@@ -93,6 +95,10 @@ final class TrendingMovieListViewModel: ObservableObject {
     private func hideError() {
         isError = false
     }
+
+    func setNavigationEventCallBack(on callback: @escaping (NavigationEvent) -> Void) {
+        onNavigation = callback
+    }
 }
 
 extension TrendingMovieListViewModel: Paginatable {
@@ -104,7 +110,7 @@ extension TrendingMovieListViewModel: Paginatable {
     /// - Returns: A list of `movies` objects.
     /// - Throws: If the request fails.
     func fetchPage(page: Int, size: Int) async throws -> [Movie] {
-        return try await useCase.fetch(page: page).results
+        return try await useCase.fetch(page: page, canUseCache: true).results
     }
 
     /// ➕ **Adds New Items to ViewData**

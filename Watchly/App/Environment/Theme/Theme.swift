@@ -83,12 +83,14 @@ struct Dimensions {
 }
 
 struct Spacing {
+    let vsmall: CGFloat
     let small: CGFloat
     let medium: CGFloat
     let large: CGFloat
     let extraLarge: CGFloat
 
-    init(small: CGFloat = 8, medium: CGFloat = 16, large: CGFloat = 24, extraLarge: CGFloat = 32) {
+    init(vsmall: CGFloat = 4, small: CGFloat = 8, medium: CGFloat = 16, large: CGFloat = 24, extraLarge: CGFloat = 32) {
+        self.vsmall = vsmall
         self.small = small
         self.medium = medium
         self.large = large

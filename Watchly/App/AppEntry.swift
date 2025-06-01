@@ -6,6 +6,7 @@
 //
 import os.signpost
 import SwiftUI
+import TMDBCore
 
 let logg = OSLog(subsystem: "com.signpost.demo", category: "MyMethod")
 
@@ -22,6 +23,8 @@ struct AppEntry: App {
     /// 🌐 **Internet Connectivity Checker (Singleton)**
     let internetConnectivityChecker = InternetConnectivityCheckerImpl()
 
+    let favouriteManager = FavouritesManager(storage: UserDefaultsStorage())
+
     /// 🎨 **Initialize App with Navigation Bar Styling**
     init() {
         internetConnectivityChecker.startMonitoring()
@@ -33,11 +36,13 @@ struct AppEntry: App {
         WindowGroup {
             NavigationStack(path: $router.navPath) {
                 RootView().navigateUsingRouter()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .environmentObject(AppEnvironment.shared)
             .environmentObject(themeManager)
             .environmentObject(router)
             .environmentObject(internetConnectivityChecker)
+            .environmentObject(favouriteManager)
             .preferredColorScheme(.light)
         }
     }
@@ -74,9 +79,13 @@ struct RootView: View {
     /// 📌 Handle Navigation Routing
     @EnvironmentObject var environment: AppEnvironment
 
+    @State var isError: Bool = false
+    @State var title: String = Router.Tab.list.title
+
     var body: some View {
         ZStack {
             TabView(selection: $router.selectedTab) {
+
                 TrendingMovieListCoordinator(environment: environment)
                     .start()
                     .tag(Router.Tab.list)
@@ -96,6 +105,11 @@ struct RootView: View {
                     .background(RoundedRectangle(cornerRadius: theme.dimensions.cornerRadius)
                         .fill(themeManager.currentTheme.colors.primary))
             }
+        }
+        .navigationTitle($title)
+        .navigationBarTitleDisplayMode(.large)
+        .onChange(of: router.selectedTab) { value in
+            title = value.title
         }
     }
 }

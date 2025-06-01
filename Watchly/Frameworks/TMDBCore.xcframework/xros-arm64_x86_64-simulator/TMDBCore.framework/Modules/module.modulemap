@@ -1,0 +1,6 @@
+framework module TMDBCore {
+  umbrella header "TMDBCore.h"
+  export *
+
+  module * { export * }
+}

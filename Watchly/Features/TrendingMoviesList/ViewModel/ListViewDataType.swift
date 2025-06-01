@@ -11,10 +11,12 @@ import Foundation
 /// A protocol that defines the data required for displaying a movie in a list.
 /// This ensures that any model conforming to it provides essential movie information.
 
+import TMDBCore
+
 protocol ListViewDataType {
     var movieID: Int { get }
     var title: String { get }
-    var posterImage: URL? { get }
+    var posterImagePath: TMDBImage? { get }
     var shortDescription: String { get }
     var voteAverage: Double { get }
     var popularityScore: Double { get }
@@ -23,8 +25,8 @@ protocol ListViewDataType {
 }
 
 extension Movie: ListViewDataType {
-    var posterImage: URL? {
-        posterPath?.getImageURL(size: .w92)
+    var posterImagePath: TMDBImage? {
+        posterPath
     }
 
     var movieID: Int {

@@ -1,0 +1,531 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-module-flags: -target arm64-apple-tvos18.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name TMDBCore
+import Foundation
+import Swift
+@_exported import TMDBCore
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os.log
+import os
+public protocol EndPointType {
+  associatedtype Response : Swift.Decodable
+  var request: TMDBCore.RequestBuilder { get }
+}
+public enum NetworkError : Swift.Error {
+  case invalidURL
+  case invalidResponse
+  case unexpectedResponse(statusCode: Swift.Int, message: Swift.String = "", data: Foundation.Data? = nil)
+  case decodingError(message: Swift.String)
+  case unknown
+  case pluginCancelled
+  case disconnected
+}
+extension TMDBCore.NetworkError {
+  public var toTMDBError: any Swift.Error {
+    get
+  }
+}
+public protocol NetworkProcesserType {
+  func request<T>(from endpoint: T) async throws -> T.Response where T : TMDBCore.EndPointType
+}
+public struct NetworkProcesserTypeImpl : TMDBCore.NetworkProcesserType {
+  public init(decoder: Foundation.JSONDecoder = JSONDecoder(), urlTaskProvider: any TMDBCore.URLDataTaskProvider = URLSession.shared)
+  public func request<T>(from endpoint: T) async throws -> T.Response where T : TMDBCore.EndPointType
+}
+@_hasMissingDesignatedInitializers final public class RequestBuilder {
+  final public func makeUrlRequest() throws -> Foundation.URLRequest
+  @objc deinit
+}
+public protocol URLDataTaskProvider {
+  func data(for request: Foundation.URLRequest) async throws -> (Foundation.Data, Foundation.URLResponse)
+}
+extension Foundation.URLSession : TMDBCore.URLDataTaskProvider {
+}
+public struct MovieDetailEndPoint : TMDBCore.EndPointType {
+  public typealias Response = TMDBCore.MovieDetails
+  public let request: TMDBCore.RequestBuilder
+  public init(baseURL: Swift.String, token: Swift.String, id: Swift.Int, page: Swift.Int = 0)
+}
+public struct MovieGenreEndpoint : TMDBCore.EndPointType {
+  public let request: TMDBCore.RequestBuilder
+  public typealias Response = TMDBCore.GenreListResponse
+  public init(baseURL: Swift.String, token: Swift.String)
+}
+public struct SearchMoviesEndPoint : TMDBCore.EndPointType {
+  public let request: TMDBCore.RequestBuilder
+  public typealias Response = TMDBCore.SearchResultsResponse
+  public init(baseURL: Swift.String, token: Swift.String, query: Swift.String, page: Swift.Int = 1)
+}
+public struct TrendingMoviesEndPoint : TMDBCore.EndPointType {
+  public typealias Response = TMDBCore.TrendingMoviesResponse
+  public let request: TMDBCore.RequestBuilder
+  public init(baseURL: Swift.String, token: Swift.String, page: Swift.Int = 0)
+}
+final public class LogWriter {
+  public struct Levels : Swift.OptionSet {
+    public init(rawValue: Swift.Int)
+    public let rawValue: Swift.Int
+    public static let error: TMDBCore.LogWriter.Levels
+    public static let warning: TMDBCore.LogWriter.Levels
+    public static let notice: TMDBCore.LogWriter.Levels
+    public static let info: TMDBCore.LogWriter.Levels
+    public static let debug: TMDBCore.LogWriter.Levels
+    public static let none: TMDBCore.LogWriter.Levels
+    public static let all: TMDBCore.LogWriter.Levels
+    public typealias ArrayLiteralElement = TMDBCore.LogWriter.Levels
+    public typealias Element = TMDBCore.LogWriter.Levels
+    public typealias RawValue = Swift.Int
+  }
+  public init(_ prefix: TMDBCore.LogPrefixType = .init(value: "##"), attributes: TMDBCore.LoggerAttributes = .default, level: TMDBCore.LogWriter.Levels = .all, loggingSystem: any TMDBCore.LoggingSystemType = ConsoleLogger())
+  final public func log(_ input: Any?, _ type: TMDBCore.LoggerStatus = .none, _ level: TMDBCore.LogWriter.Levels, forcedAttributes: TMDBCore.LoggerAttributes? = nil, funcname: Swift.String = #function, filename: Swift.String = #file, line: Swift.Int = #line)
+  final public func logI(_ input: Any?, _ type: TMDBCore.LoggerStatus = .none, forcedAttributes: TMDBCore.LoggerAttributes? = nil, funcname: Swift.String = #function, filename: Swift.String = #file, line: Swift.Int = #line)
+  final public func logE(_ input: Any?, _ type: TMDBCore.LoggerStatus = .none, forcedAttributes: TMDBCore.LoggerAttributes? = nil, funcname: Swift.String = #function, filename: Swift.String = #file, line: Swift.Int = #line)
+  final public func logW(_ input: Any?, _ type: TMDBCore.LoggerStatus = .none, forcedAttributes: TMDBCore.LoggerAttributes? = nil, funcname: Swift.String = #function, filename: Swift.String = #file, line: Swift.Int = #line)
+  final public func logN(_ input: Any?, _ type: TMDBCore.LoggerStatus = .none, forcedAttributes: TMDBCore.LoggerAttributes? = nil, funcname: Swift.String = #function, filename: Swift.String = #file, line: Swift.Int = #line)
+  @objc deinit
+}
+extension Swift.String {
+  public func beautifyURL(_ prefix: Swift.String = "##") -> Swift.String?
+  public func beautifyJSON() -> Swift.String?
+}
+public struct LogPrefixType {
+  public let value: Swift.String
+  public init(value: Swift.String)
+}
+public struct LoggerAttributes : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public static let funcName: TMDBCore.LoggerAttributes
+  public static let prefix: TMDBCore.LoggerAttributes
+  public static let flag: TMDBCore.LoggerAttributes
+  public static let status: TMDBCore.LoggerAttributes
+  public static let duration: TMDBCore.LoggerAttributes
+  public static let dateStamp: TMDBCore.LoggerAttributes
+  public static let filename: TMDBCore.LoggerAttributes
+  public static let symbol: TMDBCore.LoggerAttributes
+  public static let common: TMDBCore.LoggerAttributes
+  public static let commonWithdate: TMDBCore.LoggerAttributes
+  public static let `default`: TMDBCore.LoggerAttributes
+  public static let timestampWithDefault: TMDBCore.LoggerAttributes
+  public init(rawValue: Swift.Int)
+  public typealias ArrayLiteralElement = TMDBCore.LoggerAttributes
+  public typealias Element = TMDBCore.LoggerAttributes
+  public typealias RawValue = Swift.Int
+}
+public protocol LoggingSystemType {
+  func log(text: Swift.String)
+}
+public struct ConsoleLogger : TMDBCore.LoggingSystemType {
+  public init()
+  public func log(text: Swift.String)
+}
+public enum LoggerStatus : Swift.String {
+  case none
+  case success
+  case failure
+  public var value: Swift.String {
+    get
+  }
+  public var flag: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum LogWriterSettings {
+  public static var globalLevel: TMDBCore.LogWriter.Levels
+}
+public struct GenreListResponse : Swift.Codable {
+  public let genres: [TMDBCore.Genre]
+  public init(genres: [TMDBCore.Genre])
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum TMDBImageSize : Swift.String {
+  case w92, w154, w185, w342, w500, w780, original
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct TMDBImage : Swift.Codable, Swift.ExpressibleByStringLiteral, Swift.Equatable {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public init(from decoder: any Swift.Decoder) throws
+  public func getImageURL(size: TMDBCore.TMDBImageSize, baseURLString: Swift.String = TMDBCoreConstants.imageBasePath) -> Foundation.URL?
+  public static func == (a: TMDBCore.TMDBImage, b: TMDBCore.TMDBImage) -> Swift.Bool
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct TMDBServerErrorResponse : Swift.Codable {
+  public let statusMessage: Swift.String
+  public let statusCode: Swift.Int
+  public let success: Swift.Bool?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TMDBServerError : Swift.Error {
+  public let model: TMDBCore.TMDBServerErrorResponse
+  public let errorCode: Swift.Int
+}
+public struct Genre : Swift.Codable, Swift.Identifiable, Swift.Equatable {
+  public let id: Swift.Int
+  public let name: Swift.String
+  public init(id: Swift.Int, name: Swift.String)
+  public static func == (a: TMDBCore.Genre, b: TMDBCore.Genre) -> Swift.Bool
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias ID = Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SpokenLanguage : Swift.Codable, Swift.Equatable {
+  public let englishName: Swift.String
+  public let iso6391: Swift.String
+  public let name: Swift.String
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case englishName
+    case iso6391
+    case name
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(englishName: Swift.String, iso6391: Swift.String, name: Swift.String)
+  public static func == (a: TMDBCore.SpokenLanguage, b: TMDBCore.SpokenLanguage) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductionCompany : Swift.Codable, Swift.Identifiable, Swift.Equatable {
+  public let id: Swift.Int
+  public let name: Swift.String
+  public let logoPath: Swift.String?
+  public let originCountry: Swift.String
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id, name
+    case logoPath
+    case originCountry
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(id: Swift.Int, name: Swift.String, logoPath: Swift.String?, originCountry: Swift.String)
+  public static func == (a: TMDBCore.ProductionCompany, b: TMDBCore.ProductionCompany) -> Swift.Bool
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias ID = Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProductionCountry : Swift.Codable, Swift.Equatable {
+  public let isoCode: Swift.String
+  public let name: Swift.String
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case isoCode
+    case name
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(isoCode: Swift.String, name: Swift.String)
+  public static func == (a: TMDBCore.ProductionCountry, b: TMDBCore.ProductionCountry) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct BelongsToCollection : Swift.Codable, Swift.Equatable {
+  public let id: Swift.Int
+  public let name: Swift.String
+  public let posterPath: TMDBCore.TMDBImage?
+  public let backdropPath: TMDBCore.TMDBImage?
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id, name
+    case posterPath
+    case backdropPath
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(id: Swift.Int, name: Swift.String, posterPath: TMDBCore.TMDBImage?, backdropPath: TMDBCore.TMDBImage?)
+  public static func == (a: TMDBCore.BelongsToCollection, b: TMDBCore.BelongsToCollection) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MovieDetails : Swift.Codable, Swift.Equatable {
+  public let id: Swift.Int
+  public let title: Swift.String
+  public let originalTitle: Swift.String
+  public let overview: Swift.String
+  public let tagline: Swift.String?
+  public let status: Swift.String
+  public let runtime: Swift.Int?
+  public let releaseDate: Swift.String
+  public let voteAverage: Swift.Double
+  public let voteCount: Swift.Int
+  public let popularity: Swift.Double
+  public let adult: Swift.Bool
+  public let video: Swift.Bool
+  public let originalLanguage: Swift.String
+  public let homepage: Swift.String?
+  public let imdbID: Swift.String?
+  public let posterPath: TMDBCore.TMDBImage?
+  public let backdropPath: TMDBCore.TMDBImage?
+  public let budget: Swift.Int?
+  public let revenue: Swift.Int?
+  public let genres: [TMDBCore.Genre]
+  public let spokenLanguages: [TMDBCore.SpokenLanguage]
+  public let productionCompanies: [TMDBCore.ProductionCompany]
+  public let productionCountries: [TMDBCore.ProductionCountry]
+  public let originCountry: [Swift.String]?
+  public let belongsToCollection: TMDBCore.BelongsToCollection?
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id, title, overview, tagline, status, runtime, adult, video, popularity, budget, revenue
+    case originalTitle
+    case releaseDate
+    case voteAverage
+    case voteCount
+    case originalLanguage
+    case homepage
+    case imdbID
+    case posterPath
+    case backdropPath
+    case genres
+    case spokenLanguages
+    case productionCompanies
+    case productionCountries
+    case originCountry
+    case belongsToCollection
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public static func == (a: TMDBCore.MovieDetails, b: TMDBCore.MovieDetails) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SearchResultsResponse : Swift.Codable, Swift.Equatable {
+  public let page: Swift.Int
+  public let results: [TMDBCore.Movie]
+  public let totalPages: Swift.Int
+  public let totalResults: Swift.Int
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case page, results
+    case totalPages
+    case totalResults
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(page: Swift.Int, results: [TMDBCore.Movie], totalPages: Swift.Int, totalResults: Swift.Int)
+  public static func == (a: TMDBCore.SearchResultsResponse, b: TMDBCore.SearchResultsResponse) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TMDBErrorResponse : Swift.Codable, Swift.Equatable {
+  public let success: Swift.Bool
+  public let statusCode: Swift.Int
+  public let statusMessage: Swift.String
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case success
+    case statusCode
+    case statusMessage
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(success: Swift.Bool, statusCode: Swift.Int, statusMessage: Swift.String)
+  public static func == (a: TMDBCore.TMDBErrorResponse, b: TMDBCore.TMDBErrorResponse) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TrendingMoviesResponse : Swift.Codable, Swift.Equatable {
+  public let page: Swift.Int
+  public let results: [TMDBCore.Movie]
+  public let totalPages: Swift.Int
+  public let totalResults: Swift.Int
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case page
+    case results
+    case totalPages
+    case totalResults
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(page: Swift.Int, results: [TMDBCore.Movie], totalPages: Swift.Int, totalResults: Swift.Int)
+  public static func == (a: TMDBCore.TrendingMoviesResponse, b: TMDBCore.TrendingMoviesResponse) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Movie : Swift.Codable, Swift.Identifiable, Swift.Equatable {
+  public let id: Swift.Int
+  public let title: Swift.String
+  public let originalTitle: Swift.String
+  public let overview: Swift.String
+  public let posterPath: TMDBCore.TMDBImage?
+  public let backdropPath: TMDBCore.TMDBImage?
+  public let mediaType: Swift.String?
+  public let genreIDs: [Swift.Int]
+  public let releaseDate: Swift.String?
+  public let voteAverage: Swift.Double
+  public let voteCount: Swift.Int
+  public let popularity: Swift.Double
+  public let adult: Swift.Bool
+  public let originalLanguage: Swift.String
+  public let video: Swift.Bool
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case id
+    case title
+    case originalTitle
+    case overview
+    case posterPath
+    case backdropPath
+    case mediaType
+    case genreIDs
+    case releaseDate
+    case voteAverage
+    case voteCount
+    case popularity
+    case adult
+    case originalLanguage
+    case video
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(id: Swift.Int, title: Swift.String, originalTitle: Swift.String, overview: Swift.String, posterPath: TMDBCore.TMDBImage?, backdropPath: TMDBCore.TMDBImage?, mediaType: Swift.String?, genreIDs: [Swift.Int], releaseDate: Swift.String?, voteAverage: Swift.Double, voteCount: Swift.Int, popularity: Swift.Double, adult: Swift.Bool, originalLanguage: Swift.String, video: Swift.Bool)
+  public static func == (a: TMDBCore.Movie, b: TMDBCore.Movie) -> Swift.Bool
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias ID = Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum TMDBCoreConstants {
+  public static let imageBasePath: Swift.String
+}
+extension TMDBCore.LoggerStatus : Swift.Equatable {}
+extension TMDBCore.LoggerStatus : Swift.Hashable {}
+extension TMDBCore.LoggerStatus : Swift.RawRepresentable {}
+extension TMDBCore.TMDBImageSize : Swift.Equatable {}
+extension TMDBCore.TMDBImageSize : Swift.Hashable {}
+extension TMDBCore.TMDBImageSize : Swift.RawRepresentable {}
+extension TMDBCore.SpokenLanguage.CodingKeys : Swift.Equatable {}
+extension TMDBCore.SpokenLanguage.CodingKeys : Swift.Hashable {}
+extension TMDBCore.SpokenLanguage.CodingKeys : Swift.RawRepresentable {}
+extension TMDBCore.ProductionCompany.CodingKeys : Swift.Equatable {}
+extension TMDBCore.ProductionCompany.CodingKeys : Swift.Hashable {}
+extension TMDBCore.ProductionCompany.CodingKeys : Swift.RawRepresentable {}
+extension TMDBCore.ProductionCountry.CodingKeys : Swift.Equatable {}
+extension TMDBCore.ProductionCountry.CodingKeys : Swift.Hashable {}
+extension TMDBCore.ProductionCountry.CodingKeys : Swift.RawRepresentable {}
+extension TMDBCore.BelongsToCollection.CodingKeys : Swift.Equatable {}
+extension TMDBCore.BelongsToCollection.CodingKeys : Swift.Hashable {}
+extension TMDBCore.BelongsToCollection.CodingKeys : Swift.RawRepresentable {}
+extension TMDBCore.MovieDetails.CodingKeys : Swift.Equatable {}
+extension TMDBCore.MovieDetails.CodingKeys : Swift.Hashable {}
+extension TMDBCore.MovieDetails.CodingKeys : Swift.RawRepresentable {}
+extension TMDBCore.SearchResultsResponse.CodingKeys : Swift.Equatable {}
+extension TMDBCore.SearchResultsResponse.CodingKeys : Swift.Hashable {}
+extension TMDBCore.SearchResultsResponse.CodingKeys : Swift.RawRepresentable {}
+extension TMDBCore.TMDBErrorResponse.CodingKeys : Swift.Equatable {}
+extension TMDBCore.TMDBErrorResponse.CodingKeys : Swift.Hashable {}
+extension TMDBCore.TMDBErrorResponse.CodingKeys : Swift.RawRepresentable {}
+extension TMDBCore.TrendingMoviesResponse.CodingKeys : Swift.Equatable {}
+extension TMDBCore.TrendingMoviesResponse.CodingKeys : Swift.Hashable {}
+extension TMDBCore.TrendingMoviesResponse.CodingKeys : Swift.RawRepresentable {}
+extension TMDBCore.Movie.CodingKeys : Swift.Equatable {}
+extension TMDBCore.Movie.CodingKeys : Swift.Hashable {}
+extension TMDBCore.Movie.CodingKeys : Swift.RawRepresentable {}

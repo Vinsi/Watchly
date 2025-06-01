@@ -32,4 +32,20 @@ enum Localized {
             String(format: NSLocalizedString("failed_to_decode", comment: ""), message)
         }
     }
+
+    enum Attributes {
+        static let releaseDate = String(localized: "release_date")
+        static let runtime = String(localized: "runtime")
+        static let budget = String(localized: "budget")
+        static let revenue = String(localized: "revenue")
+        static let language = String(localized: "language")
+        static let production = String(localized: "production")
+        static let gotowebsite = String(localized: "goto.website")
+    }
+
+    enum Sections {
+        static let details = String(localized: "details")
+        static let genres = String(localized: "genres")
+        static let overview = String(localized: "overview")
+    }
 }

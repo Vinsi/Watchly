@@ -5,6 +5,8 @@
 //  Created by Vinsi.
 //
 
+import TMDBCore
+
 protocol MovieSearchUseCaseType {
     func search(query: String) async throws -> SearchResultsResponse
 }

@@ -4,6 +4,8 @@
 //
 //  Created by Vinsi.
 //
+import TMDBCore
+
 let logPaging = LogWriter(.init(value: "List"))
 let log = LogWriter(.init(value: "TMDB"))
 let logNet = LogWriter(.init(value: "Net"))
@@ -23,39 +25,36 @@ struct TrendingMovieListView: View {
     }
 
     var body: some View {
-        NavigationView {
-            VStack {
-                ZStack(alignment: .top) {
-                    MoviesListView(
-                        movies: viewModel.viewData,
-                        onTap: viewModel.onSelect(_:),
-                        onAppear5thLastElement: { [weak viewModel] in
-                            viewModel?.loadMore()
-                        }
-                    )
 
-                    if viewModel.pageIsLoading {
-                        HUDLoaderView()
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        VStack {
+            ZStack(alignment: .top) {
+                ItemListView(
+                    movies: viewModel.viewData,
+                    onTap: viewModel.onSelect(_:),
+                    onAppear5thLastElement: { [weak viewModel] in
+                        viewModel?.loadMore()
                     }
+                )
+
+                if viewModel.pageIsLoading {
+                    HUDLoaderView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 }
-                .background(AppBackground())
             }
-            .refreshable {
-                viewModel.loadFromStart()
-            }
-            .navigationTitle(Localized.homeTitle)
-            .navigationBarTitleDisplayMode(.inline)
-            .onChange(of: viewModel.navigation, perform: { event in
+            .background(AppBackground())
+        }
+        .refreshable {
+            viewModel.loadFromStart()
+        }
+        .onAppear {
+            viewModel.initialFetch()
+        }
+        .task {
+            viewModel.setNavigationEventCallBack { [weak router] event in
                 switch event {
-                case .details:
-                    router.navigate(to: .details(id: 12))
-                case .none:
-                    break
+                case .details(let movieID):
+                    router?.navigate(to: .details(id: movieID))
                 }
-            })
-            .onAppear {
-                viewModel.initialFetch()
             }
         }
         .errorAlert(

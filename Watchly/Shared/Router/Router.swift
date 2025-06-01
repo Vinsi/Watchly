@@ -14,9 +14,16 @@ final class Router: ObservableObject {
     }
 
     // Define top-level tabs
-    public enum Tab: String, CaseIterable {
+    public enum Tab: String, Equatable, CaseIterable {
         case list
         case search
+
+        var title: String {
+            switch self {
+            case .list: Localized.homeTitle
+            case .search: Localized.searchTitle
+            }
+        }
     }
 
     @Published var navPath = NavigationPath()
@@ -40,8 +47,8 @@ extension Router.Destination {
     @MainActor @ViewBuilder
     var toView: some View {
         switch self {
-        case .details:
-            EmptyView()
+        case .details(let movieID):
+            DetailCoordinator(environment: AppEnvironment.shared, movieID: movieID).start()
         }
     }
 }

@@ -4,6 +4,7 @@
 //
 //  Created by Vinsi on 29/05/2025.
 //
+import TMDBCore
 
 protocol MovieGenreListServiceType {
     /// Fetches all trending movies

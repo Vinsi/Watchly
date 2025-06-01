@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TMDBCore
 
 struct TrendingMovieListCoordinator: Coordinator {
     let environment: AppEnvironment
@@ -17,7 +18,8 @@ struct TrendingMovieListCoordinator: Coordinator {
         let service = TrendingMovieListServiceImpl(
             baseURLProvider: environment,
             tokenProvider: environment,
-            network: network
+            network: network,
+            cacheFacilitator: EndPointCacheFaciltator<TrendingMoviesEndPoint>()
         )
         useCase = GetTrendingMoviesUseCaseImpl(service: service)
     }

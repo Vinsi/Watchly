@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TMDBCore
 
 protocol Paginatable: AnyObject {
     associatedtype DataType

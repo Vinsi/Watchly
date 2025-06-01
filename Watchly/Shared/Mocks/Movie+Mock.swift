@@ -4,6 +4,7 @@
 //
 //  Created by Vinsi.
 //
+import TMDBCore
 
 extension Movie {
     static func mock(

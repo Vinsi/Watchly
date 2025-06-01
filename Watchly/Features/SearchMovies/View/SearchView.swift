@@ -20,45 +20,51 @@ struct SearchView: View {
     }
 
     var body: some View {
-        NavigationView {
-            VStack {
-                ZStack {
-                    AppBackground()
+//        NavigationView {
+        VStack {
+            ZStack {
+                AppBackground()
 
-                    VStack(alignment: .leading) {
-                        SearchBarView(
-                            searchText: $viewModel.searchText,
-                            isLoading: $viewModel.isLoading,
-                            placeholder: Localized.searchPlaceholder,
-                            theme: themeManager.currentTheme
+                VStack(alignment: .leading) {
+
+                    SearchBarView(
+                        searchText: $viewModel.searchText,
+                        isLoading: $viewModel.isLoading,
+                        placeholder: Localized.searchPlaceholder,
+                        theme: themeManager.currentTheme
+                    )
+                    .padding(.top, themeManager.currentTheme.spacing.medium)
+
+                    Spacer()
+
+                    if case .success(let movies) = viewModel.dataState {
+                        MoviesListView(
+                            movies: movies,
+                            onTap: viewModel.onSelect(_:)
                         )
-                        .padding(.top, themeManager.currentTheme.spacing.medium)
-                        Spacer()
-
-                        if case .success(let movies) = viewModel.dataState {
-                            MoviesListView(
-                                movies: movies,
-                                onTap: viewModel.onSelect(_:)
-                            )
-                        }
                     }
                 }
             }
+        }
 
-            .navigationBarTitleDisplayMode(.inline)
-            .onChange(of: viewModel.dataState, perform: { newValue in
-                if case .failure = newValue {
-                    hasError = true
-                } else {
-                    hasError = false
-                }
-            })
-            .onChange(of: viewModel.navigation) { newValue in
-                if case .detail(let id) = newValue {
-                    router.navigate(to: .details(id: id))
+//        .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: viewModel.dataState, perform: { newValue in
+            if case .failure(let error) = newValue, let appError = error as? AppError {
+
+                hasError = appError != .emptyValue
+            } else {
+                hasError = false
+            }
+        })
+        .task {
+            viewModel.setNavigationEventCallBack { [weak router] event in
+                switch event {
+                case .detail(let movieID):
+                    router?.navigate(to: .details(id: movieID))
                 }
             }
         }
+//        }
 
         .errorAlert(
             isPresented: $hasError,

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TMDBCore
 
 struct SearchMoviesCoordinator: Coordinator {
     let environment: AppEnvironment
@@ -14,7 +15,12 @@ struct SearchMoviesCoordinator: Coordinator {
     init(environment: AppEnvironment) {
         self.environment = environment
         let network = NetworkProcesserTypeImpl()
-        let service = MovieSearchServiceImpl(network: network, baseURLProvider: environment, tokenProvider: environment)
+        let service = MovieSearchServiceImpl(
+            network: network,
+            baseURLProvider: environment,
+            tokenProvider: environment,
+            cacheFacilitator: EndPointCacheFaciltator<SearchMoviesEndPoint>()
+        )
         useCase = MovieSearchUseCaseImpl(service: service)
     }
 

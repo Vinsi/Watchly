@@ -5,8 +5,10 @@
 //  Created by Vinsi.
 //
 
+import TMDBCore
+
 struct MockTrendingMoviesListServiceType: TrendingMovieListServiceType {
-    func getAll(page: Int) async throws -> TrendingMoviesResponse {
+    func getAll(page: Int, canUseCache: Bool) async throws -> TMDBCore.TrendingMoviesResponse {
         action()
     }
 
