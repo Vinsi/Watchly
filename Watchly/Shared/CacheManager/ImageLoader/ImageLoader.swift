@@ -9,7 +9,7 @@ import SwiftUI
 import TMDBCore
 import UIKit
 
-final class ImageLoader: ObservableObject {
+final class ImageLoader: ObservableObject, @unchecked Sendable {
 
     enum State {
         case notStarted
