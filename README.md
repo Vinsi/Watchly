@@ -95,7 +95,7 @@ Features/
 ---
 
 ## 🧰 Tools & Tech
-
+- Tested on Xcode 6.0 and 6.2
 - Min Depolyment Target 16.6
 - Swift 5.9+
 - SwiftUI + UIKit (interoperability)
@@ -113,7 +113,17 @@ git clone https://github.com/your-org/Watchly.git
 open Watchly.xcodeproj
 ```
 
-No API key is needed when running with stubs; for live mode, plug in your TMDB key via `.xcconfig`.
+No API key is needed has 3 Environments Token is passed through Xcconfig, plug in your TMDB key via `.xcconfig`.
+
+⚠️ Note for Reviewer:
+
+If the project fails to load due to SwiftFormat-related issues, it’s likely caused by a mismatch in SwiftPM manifest evaluation.
+
+I’m using Xcode 16.0 and 16.2, and in some environments (especially with Mint or SwiftFormat via SPM), the Package.swift file may not resolve properly if the wrong SDK (e.g., iPhoneSimulator) is used.
+
+✅ Workaround: If you encounter build issues related to SwiftFormat, try temporarily commenting out the SwiftFormat package reference and proceed with the review. This will not affect the app logic.
+
+Let me know if you need a preformatted version or help setting up SwiftFormat via Homebrew instead of SPM.
 
 ---
 
