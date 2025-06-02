@@ -19,13 +19,10 @@ struct ItemListView: View {
     var onTap: ((ListViewDataType) -> Void)?
     var onAppear5thLastElement: (() -> Void)?
     private var width: CGFloat {
-        func length(count: Int, padding: CGFloat) -> CGFloat {
-            (UIScreen.main.bounds.width - (CGFloat(count) + 1 * padding)) * 0.5
-        }
         if horizontalSizeClass == .compact {
-            return length(count: 2, padding: 8)
+            return ScreenLayout.gridLength(count: 2, spacing: 8)
         } else {
-            return length(count: 4, padding: 8)
+            return ScreenLayout.gridLength(count: 4, spacing: 8)
         }
     }
 
