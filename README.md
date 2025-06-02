@@ -122,6 +122,7 @@ If the project fails to load due to SwiftFormat-related issues, it’s likely ca
 I’m using Xcode 16.0 and 16.2, and in some environments (especially with Mint or SwiftFormat via SPM), the Package.swift file may not resolve properly if the wrong SDK (e.g., iPhoneSimulator) is used.
 
 ✅ Workaround: If you encounter build issues related to SwiftFormat, try temporarily commenting out the SwiftFormat package reference and proceed with the review. This will not affect the app logic.
+eg: https://github.com/Vinsi/Watchly/blob/066e2d82215fd2d48696d1650fba94d715b18985/Scripts/format-code.sh#L11-L15
 
 Let me know if you need a preformatted version or help setting up SwiftFormat via Homebrew instead of SPM.
 
