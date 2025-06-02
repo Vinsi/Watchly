@@ -13,6 +13,9 @@
 
 ---
 
+## Video
+[▶️ Watch the demo](https://www.dropbox.com/scl/fi/sjv8yue4phra84hieg6ar/screen.mov?rlkey=b65m4i5aglhv91npn0y51o9ht&st=85q4n1ss&raw=1)
+
 ## ✨ Features
 
 - ✅ Trending movie list UI
