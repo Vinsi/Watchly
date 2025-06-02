@@ -8,24 +8,19 @@
 import SwiftUI
 import TMDBCore
 
-struct TMDBRemoteImage: View {
+struct TMDBRemoteImage<PlaceHolder: View>: View {
+    @EnvironmentObject var themeManager: ThemeManager
     @StateObject private var loader = TMDBImageDownloader()
     @State private var isVisible = false
     let url: TMDBImage?
-    let placeholder: Image
-
-    init(url: TMDBImage?, placeholder: Image = Image(systemName: "photo")) {
+    let placeholder: PlaceHolder
+    init(url: TMDBImage?, @ViewBuilder placeholder: () -> PlaceHolder) {
         self.url = url
-        self.placeholder = placeholder
+        self.placeholder = placeholder()
     }
 
     @ViewBuilder func loaderPlaceholder() -> some View {
         placeholder
-            .resizable()
-            .scaledToFit()
-            .opacity(0.2)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .clipped()
             .overlay {
                 LoaderView(color:
                     DefaultTheme()

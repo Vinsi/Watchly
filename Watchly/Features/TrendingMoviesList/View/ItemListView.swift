@@ -18,16 +18,16 @@ struct ItemListView: View {
     let movies: [any ListViewDataType]
     var onTap: ((ListViewDataType) -> Void)?
     var onAppear5thLastElement: (() -> Void)?
-//    private var width: CGFloat {
-//        func length(count: Int, padding: CGFloat) -> CGFloat {
-//            (UIScreen.main.bounds.width - (CGFloat(count) + 1 * padding)) * 0.5
-//        }
-//        if horizontalSizeClass == .compact {
-//            return length(count: 2, padding: 8)
-//        } else {
-//            return length(count: 4, padding: 8)
-//        }
-//    }
+    private var width: CGFloat {
+        func length(count: Int, padding: CGFloat) -> CGFloat {
+            (UIScreen.main.bounds.width - (CGFloat(count) + 1 * padding)) * 0.5
+        }
+        if horizontalSizeClass == .compact {
+            return length(count: 2, padding: 8)
+        } else {
+            return length(count: 4, padding: 8)
+        }
+    }
 
     @ViewBuilder
     private func cell(_ movie: ListViewDataType) -> some View {
@@ -36,16 +36,24 @@ struct ItemListView: View {
             title: movie.title,
             releaseDate: movie.releaseDate,
             rating: movie.voteAverage * 10,
-            width: 1 * 0.99
+            width: width
         )
         .accessibilityLabel("moviebox")
     }
 
     var columns: [GridItem] {
         if horizontalSizeClass == .compact {
-            return Array(repeating: GridItem(.flexible()), count: 2)
+            return [
+                GridItem(.flexible(), spacing: 8),
+                GridItem(.flexible()),
+            ]
         } else {
-            return Array(repeating: GridItem(.flexible()), count: 4)
+            return [
+                GridItem(.flexible(), spacing: 8),
+                GridItem(.flexible(), spacing: 8),
+                GridItem(.flexible(), spacing: 8),
+                GridItem(.flexible()),
+            ]
         }
     }
 
@@ -53,10 +61,9 @@ struct ItemListView: View {
         ScrollView {
 
             LazyVGrid(columns: columns, spacing: 8) {
-                ForEach(movies.indices, id: \.self) { index in
-                    let movie = movies[index]
+                ForEach(movies, id: \.movieID) { index in
+                    let movie = index // movies[index]
                     cell(movie)
-
                         .onAppear {
                             guard movies.lastNthItem(is: movie, nthIndex: 5) else {
                                 return

@@ -18,37 +18,42 @@ struct MovieBoxView: View {
         VStack(alignment: .leading, spacing: 8) {
 
             ZStack(alignment: .bottomLeading) {
-                RemoteImage(url: posterURL)
+                RemoteImage(url: posterURL, placeholder: { placeholderImage(theme: themeManager.currentTheme) })
                     .frame(height: themeManager.currentTheme.dimensions.cardHeight)
+                    .frame(width: width * 0.95)
                     .clipped()
-                RatingBadgeView(rating: rating).offset(
-                    x: themeManager.currentTheme.spacing.large,
-                    y: themeManager.currentTheme.spacing.large
-                )
+                if rating != 0 {
+                    RatingBadgeView(rating: rating).offset(
+                        x: themeManager.currentTheme.spacing.large,
+                        y: themeManager.currentTheme.spacing.large
+                    )
+                }
             }
-
             VStack(alignment: .leading) {
 
                 Text(title)
                     .font(.headline)
-                    .lineLimit(2)
+                    .truncationMode(.tail)
+                    .lineLimit(1)
                     .foregroundColor(.primary)
 
                 Text(releaseDate ?? "")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
+            .frame(width: width - 2 * 16)
             .padding(.top, 20)
             .padding([.horizontal, .bottom], 8)
         }
+
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .background(
             RoundedRectangle(cornerRadius: themeManager.currentTheme.dimensions.cornerRadius)
                 .fill(Color.white)
                 .shadow(color: themeManager.currentTheme.colors.primary.opacity(0.2), radius: 2)
         )
-        .frame(height: themeManager.currentTheme.dimensions.movieBoxHeight
-        )
+
+        .frame(height: themeManager.currentTheme.dimensions.movieBoxHeight)
     }
 }
 

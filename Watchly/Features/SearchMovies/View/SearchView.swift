@@ -24,17 +24,14 @@ struct SearchView: View {
             ZStack {
                 AppBackground()
 
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: themeManager.currentTheme.spacing.small) {
 
                     SearchBarView(
-                        searchText: $viewModel.searchText,
+                        changedText: $viewModel.searchText,
                         isLoading: $viewModel.isLoading,
                         placeholder: Localized.searchPlaceholder,
                         theme: themeManager.currentTheme
                     )
-                    .padding(.top, themeManager.currentTheme.spacing.medium)
-
-                    Spacer()
 
                     if case .success(let movies) = viewModel.dataState {
                         ItemListView(
@@ -43,7 +40,10 @@ struct SearchView: View {
                             onAppear5thLastElement: nil
                         )
                     }
+
+                    Spacer()
                 }
+                .padding(.top, themeManager.currentTheme.spacing.medium)
             }
         }
 

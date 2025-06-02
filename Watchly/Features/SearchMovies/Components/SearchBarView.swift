@@ -25,7 +25,9 @@ struct PlaceholderStyle: ViewModifier {
 }
 
 struct SearchBarView: View {
-    @Binding var searchText: String
+    @Binding var changedText: String
+    @State private var searchText: String = ""
+    @State private var isEditing: Bool = false
     @Binding var isLoading: Bool
     @FocusState private var isFocused: Bool
     let placeholder: String
@@ -45,16 +47,23 @@ struct SearchBarView: View {
                     .square(size: theme.dimensions.iconSizeSmall)
             }
 
-            TextField(placeholder, text: $searchText)
-                .focused($isFocused)
-                .foregroundColor(theme.colors.textPrimary)
-                .modifier(
-                    PlaceholderStyle(showPlaceholder: searchText.isEmpty,
-                                     placeholder: placeholder,
-                                     placeholderColor: .gray)
-                )
-                .autocorrectionDisabled(true)
-                .font(theme.typography.mediumTitle)
+            TextField(placeholder, text: $searchText, onEditingChanged: {
+                isEditing = $0
+            }).onChange(of: searchText, perform: { newValue in
+                if isEditing {
+                    changedText = newValue
+                }
+            })
+
+            .focused($isFocused)
+            .foregroundColor(theme.colors.textPrimary)
+            .modifier(
+                PlaceholderStyle(showPlaceholder: searchText.isEmpty,
+                                 placeholder: placeholder,
+                                 placeholderColor: .gray)
+            )
+            .autocorrectionDisabled(true)
+            .font(theme.typography.mediumTitle)
 
             Image(systemName: theme.images.closeSystemIcon)
                 .padding(0)
@@ -86,7 +95,7 @@ struct SearchBarView: View {
 
 #Preview {
     SearchBarView(
-        searchText: .constant("h"),
+        changedText: .constant("h"),
         isLoading: .constant(false),
         placeholder: "Search",
         theme: DefaultTheme()

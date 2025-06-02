@@ -6,15 +6,24 @@
 //
 import SwiftUI
 
-struct RemoteImage: View {
+@ViewBuilder
+func placeholderImage(theme: Theme) -> some View {
+    Image(systemName: "photo")
+        .foregroundColor(theme.colors.primary)
+        .scaledToFill()
+        .opacity(0.1)
+}
+
+struct RemoteImage<PlaceHolder: View>: View {
+    @EnvironmentObject var themeManager: ThemeManager
     @StateObject private var loader = ImageLoader()
     @State private var isVisible = false
     let url: URL?
-    let placeholder: Image
+    var placeholder: PlaceHolder
 
-    init(url: URL?, placeholder: Image = Image(systemName: "photo")) {
+    init(url: URL?, @ViewBuilder placeholder: () -> PlaceHolder) {
         self.url = url
-        self.placeholder = placeholder
+        self.placeholder = placeholder()
     }
 
     var body: some View {
@@ -30,8 +39,6 @@ struct RemoteImage: View {
                     }
             } else if case .loading = loader.state {
                 placeholder
-                    .scaledToFill()
-                    .opacity(0.5)
                     .overlay {
                         LoaderView(color:
                             DefaultTheme()
@@ -45,8 +52,6 @@ struct RemoteImage: View {
             } else if case .completed = loader.state {
                 if loader.image == nil {
                     placeholder
-                        .scaledToFill()
-                        .opacity(0.5)
                 }
             }
         }

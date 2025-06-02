@@ -90,7 +90,7 @@ extension DetailSection {
     @ViewBuilder
     private func posterBackdrop(_ movieID: Int, _ image: TMDBImage, theme: Theme) -> some View {
         ZStack(alignment: .bottomTrailing) {
-            TMDBRemoteImage(url: image)
+            TMDBRemoteImage(url: image, placeholder: { placeholderImage(theme: theme) })
                 .frame(height: 250)
                 .clipped()
 
@@ -103,7 +103,7 @@ extension DetailSection {
     @ViewBuilder
     private func posterImage(posterAttribute: PosterAttributes, theme: Theme) -> some View {
         HStack(alignment: .top, spacing: theme.spacing.medium) {
-            TMDBRemoteImage(url: posterAttribute.poster)
+            TMDBRemoteImage(url: posterAttribute.poster, placeholder: { placeholderImage(theme: theme) })
                 .frame(width: 120, height: 180)
                 .cornerRadius(theme.dimensions.cornerRadius)
 

@@ -111,10 +111,20 @@ extension TrendingMovieListViewModel: Paginatable {
     /// ➕ **Adds New Items to ViewData**
     /// - Appends fetched movies to the list.
     func add(items: [Movie]) {
-        viewData.append(contentsOf: items)
+        var newFilteredItems = items
+        if let movies = viewData as? [Movie] {
+            newFilteredItems = Array(Set(items).subtracting(movies))
+        }
+        viewData.append(contentsOf: newFilteredItems)
     }
 
     func reset() {
         viewData.removeAll()
+    }
+}
+
+extension Movie: @retroactive Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
