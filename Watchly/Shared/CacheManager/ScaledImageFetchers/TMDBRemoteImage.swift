@@ -21,13 +21,6 @@ struct TMDBRemoteImage<PlaceHolder: View>: View {
 
     @ViewBuilder func loaderPlaceholder() -> some View {
         placeholder
-            .overlay {
-                LoaderView(color:
-                    DefaultTheme()
-                        .colors
-                        .primary
-                )
-            }
     }
 
     var body: some View {

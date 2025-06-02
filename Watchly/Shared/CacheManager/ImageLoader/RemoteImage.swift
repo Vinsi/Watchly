@@ -6,14 +6,6 @@
 //
 import SwiftUI
 
-@ViewBuilder
-func placeholderImage(theme: Theme) -> some View {
-    Image(systemName: "photo")
-        .foregroundColor(theme.colors.primary)
-        .scaledToFill()
-        .opacity(0.1)
-}
-
 struct RemoteImage<PlaceHolder: View>: View {
     @EnvironmentObject var themeManager: ThemeManager
     @StateObject private var loader = ImageLoader()
@@ -39,13 +31,6 @@ struct RemoteImage<PlaceHolder: View>: View {
                     }
             } else if case .loading = loader.state {
                 placeholder
-                    .overlay {
-                        LoaderView(color:
-                            DefaultTheme()
-                                .colors
-                                .primary
-                        )
-                    }
             } else if case .notStarted = loader.state {
                 EmptyView()
 
