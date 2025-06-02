@@ -1,6 +1,7 @@
 #!/bin/sh
 # Start a clean environment
 /usr/bin/env -i HOME="$HOME" PATH="$PATH"
+export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 
 if [ "$1" == "" ]; then
   echo "Requires directory"
