@@ -91,7 +91,7 @@ extension DetailSection {
     private func posterBackdrop(_ movieID: Int, _ image: TMDBImage, theme: Theme) -> some View {
         ZStack(alignment: .bottomTrailing) {
             TMDBRemoteImage(url: image, placeholder: { placeholderImage(theme: theme) })
-                .frame(height: ScreenLayout.height(0.25))
+                .frame(height: Layout.deviceScreen.height(0.25))
                 .clipped()
 
             FavoritesButtonSwiftUI(movieID: movieID)
@@ -104,7 +104,7 @@ extension DetailSection {
     private func posterImage(posterAttribute: PosterAttributes, theme: Theme) -> some View {
         HStack(alignment: .top, spacing: theme.spacing.medium) {
             TMDBRemoteImage(url: posterAttribute.poster, placeholder: { placeholderImage(theme: theme) })
-                .frame(width: ScreenLayout.width(0.20), height: ScreenLayout.width(0.30))
+                .frame(width: Layout.deviceScreen.width(0.20), height: Layout.deviceScreen.width(0.30))
                 .cornerRadius(theme.dimensions.cornerRadius)
 
             VStack(alignment: .leading, spacing: theme.spacing.small) {

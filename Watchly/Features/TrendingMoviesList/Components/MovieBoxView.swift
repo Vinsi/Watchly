@@ -13,14 +13,14 @@ struct MovieBoxView: View {
     let title: String
     let releaseDate: String?
     let rating: Double
-    let width: CGFloat
+    // let width: CGFloat
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
 
             ZStack(alignment: .bottomLeading) {
+
                 RemoteImage(url: posterURL, placeholder: { placeholderImage(theme: themeManager.currentTheme) })
                     .frame(height: themeManager.currentTheme.dimensions.cardHeight)
-                    .frame(width: width * 0.98)
                     .clipped()
                 if rating != 0 {
                     RatingBadgeView(rating: rating).offset(
@@ -29,6 +29,7 @@ struct MovieBoxView: View {
                     )
                 }
             }
+
             VStack(alignment: .leading) {
                 HStack {
 
@@ -50,7 +51,6 @@ struct MovieBoxView: View {
 
                 Spacer().frame(minHeight: 0)
             }
-            .frame(width: width - 2 * 16)
             .padding(.top, 20)
             .padding([.horizontal, .bottom], 8)
         }
@@ -71,8 +71,7 @@ struct MovieBoxView: View {
         posterURL: URL(string: "https://image.tmdb.org/t/p/w500/mKKqV23MQ0uakJS8OCE2TfV5jNS.jpg"),
         title: "Final Destination Bloodlines (2025)",
         releaseDate: "May 21, 2025",
-        rating: 71,
-        width: 120
+        rating: 71
     )
     .frame(width: 160)
     .environmentObject(ThemeManager())

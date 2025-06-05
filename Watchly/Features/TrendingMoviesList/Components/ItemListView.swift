@@ -7,24 +7,54 @@
 import SwiftUI
 import TMDBCore
 
-struct DeviceLayout {
-    let iphonePortrait = 2
-    let ipadportrait = 4
+enum DeviceLayout: Int {
+    case phonePortrait = 2
+    case phoneLandscape = 3
+    case padPortrait = 4
+    case padLandscape = 6
+
+    init(size: UserInterfaceSizeClass, isLandScape: Bool) {
+
+        switch (UIDevice.current.userInterfaceIdiom, size) {
+        case (.phone, .compact):
+            self = .phonePortrait
+        case (.phone, .regular):
+            self = .phoneLandscape
+        case (.pad, .compact):
+            self = .padPortrait
+        case (.pad, .regular) where isLandScape:
+            self = .padLandscape
+        case (.pad, .regular):
+            self = .padPortrait
+        default:
+            self = .phonePortrait
+        }
+    }
+
+    var columnsCount: Int {
+        switch self {
+        case .phonePortrait:
+            2
+        case .phoneLandscape:
+            3
+        case .padPortrait:
+            4
+        case .padLandscape:
+            6
+        }
+    }
+
+    var columns: [GridItem] {
+        Array(repeating: GridItem(.flexible(), spacing: 16), count: columnsCount - 1) + [GridItem(.flexible())]
+    }
 }
 
 struct ItemListView: View {
+    @EnvironmentObject var orientation: DeviceOrientationObserver
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.verticalSizeClass) var verticalSizeClass
     let movies: [any ListViewDataType]
     var onTap: ((ListViewDataType) -> Void)?
     var onAppear5thLastElement: (() -> Void)?
-    private var width: CGFloat {
-        if horizontalSizeClass == .compact {
-            return ScreenLayout.gridLength(count: 2, spacing: 8)
-        } else {
-            return ScreenLayout.gridLength(count: 4, spacing: 8)
-        }
-    }
 
     @ViewBuilder
     private func cell(_ movie: ListViewDataType) -> some View {
@@ -32,26 +62,13 @@ struct ItemListView: View {
             posterURL: movie.posterImagePath?.getImageURL(size: .w185),
             title: movie.title,
             releaseDate: movie.releaseDate,
-            rating: movie.voteAverage * 10,
-            width: width
+            rating: movie.voteAverage * 10
         )
         .accessibilityLabel("moviebox")
     }
 
     var columns: [GridItem] {
-        if horizontalSizeClass == .compact {
-            return [
-                GridItem(.flexible(), spacing: 8),
-                GridItem(.flexible()),
-            ]
-        } else {
-            return [
-                GridItem(.flexible(), spacing: 8),
-                GridItem(.flexible(), spacing: 8),
-                GridItem(.flexible(), spacing: 8),
-                GridItem(.flexible()),
-            ]
-        }
+        DeviceLayout(size: horizontalSizeClass ?? .compact, isLandScape: orientation.isLandscape).columns
     }
 
     var body: some View {

@@ -1,3 +1,11 @@
+//
+//  RatingBadgeView.swift
+//  Watchly
+//
+//  Created by Vinsi on 05/06/2025.
+//
+import SwiftUI
+
 struct RatingBadgeView: View {
     let rating: Double
     @EnvironmentObject var themeManager: ThemeManager

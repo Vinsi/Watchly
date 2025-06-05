@@ -18,6 +18,8 @@ struct AppEntry: App {
     /// 🎨 **Theme Manager for Dark/Light Mode**
     @ObservedObject var themeManager = ThemeManager()
 
+    @ObservedObject var orientationObserver = DeviceOrientationObserver.shared
+
     /// 🌐 **Internet Connectivity Checker (Singleton)**
     let internetConnectivityChecker = InternetConnectivityCheckerImpl()
 
@@ -41,6 +43,7 @@ struct AppEntry: App {
             .environmentObject(router)
             .environmentObject(internetConnectivityChecker)
             .environmentObject(favouriteManager)
+            .environmentObject(orientationObserver)
             .preferredColorScheme(.light)
         }
     }
