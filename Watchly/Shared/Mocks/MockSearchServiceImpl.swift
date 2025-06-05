@@ -7,6 +7,7 @@
 import TMDBCore
 
 final class MockSearchServiceImpl: SearchServiceType {
+
     var shouldFail: Bool = false
     var stubbedResponse: SearchResultsResponse
 
@@ -15,7 +16,7 @@ final class MockSearchServiceImpl: SearchServiceType {
         self.stubbedResponse = stubbedResponse
     }
 
-    func search(query: String) async throws -> SearchResultsResponse? {
+    func search(query: String, page: Int) async throws -> SearchResultsResponse? {
         if shouldFail {
             throw NSError(domain: "MockError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Mock failure"])
         }

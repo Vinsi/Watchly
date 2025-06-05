@@ -22,7 +22,7 @@ final class TrendingMovieListViewModel: ObservableObject {
     @Published private(set) var viewData: [ListViewDataType] = []
 
     @Published var isError: Bool = false
-    private var onNavigation: ((NavigationEvent) -> Void)?
+    var onNavigation: ((NavigationEvent) -> Void)?
 
     private(set) var errorMessage: String?
 
@@ -89,10 +89,6 @@ final class TrendingMovieListViewModel: ObservableObject {
     @MainActor
     private func hideError() {
         isError = false
-    }
-
-    func setNavigationEventCallBack(on callback: @escaping (NavigationEvent) -> Void) {
-        onNavigation = callback
     }
 }
 

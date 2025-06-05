@@ -8,7 +8,7 @@
 import TMDBCore
 
 protocol SearchServiceType {
-    func search(query: String) async throws -> SearchResultsResponse?
+    func search(query: String, page: Int) async throws -> SearchResultsResponse?
 }
 
 struct MovieSearchServiceImpl: SearchServiceType {
@@ -18,14 +18,15 @@ struct MovieSearchServiceImpl: SearchServiceType {
     let tokenProvider: TokenProvider
     let cacheFacilitator: EndPointCacheFaciltator<SearchMoviesEndPoint>
 
-    func search(query: String) async throws -> SearchResultsResponse? {
+    func search(query: String, page: Int) async throws -> SearchResultsResponse? {
         guard query.isNotEmpty else {
             return nil
         }
         let endPoint = SearchMoviesEndPoint(
             baseURL: baseURLProvider.baseURL,
             token: tokenProvider.token,
-            query: query
+            query: query,
+            page: page
         )
         return try await cacheFacilitator.executeWithCache(endPoint: endPoint, network: network)
     }

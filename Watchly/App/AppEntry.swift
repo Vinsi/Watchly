@@ -84,11 +84,11 @@ struct RootView: View {
         ZStack {
             TabView(selection: $router.selectedTab) {
 
-                TrendingMovieListCoordinator(environment: environment)
+                TrendingMovieListCoordinator(environment: environment, router: router)
                     .start()
                     .tag(Router.Tab.list)
 
-                SearchMoviesCoordinator(environment: environment)
+                SearchMoviesCoordinator(environment: environment, router: router)
                     .start()
                     .tag(Router.Tab.search)
             }

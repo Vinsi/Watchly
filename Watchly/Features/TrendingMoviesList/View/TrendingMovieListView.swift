@@ -4,20 +4,22 @@
 //
 //  Created by Vinsi.
 //
-import TMDBCore
-
 import SwiftUI
+import TMDBCore
 
 struct TrendingMovieListView: View {
     @EnvironmentObject private var router: Router
     @EnvironmentObject private var environment: AppEnvironment
     @EnvironmentObject private var themeManager: ThemeManager
     @StateObject var viewModel: TrendingMovieListViewModel
-    var onTap: ((ListViewDataType) -> Void)?
 
-    init(useCase: GetTrendingMoviesUseCaseType, onTap: ((ListViewDataType) -> Void)? = nil) {
-        _viewModel = StateObject(wrappedValue: TrendingMovieListViewModel(useCase: useCase))
-        self.onTap = onTap
+    init(
+        useCase: GetTrendingMoviesUseCaseType,
+        onNavigation: ((TrendingMovieListViewModel.NavigationEvent) -> Void)? = nil
+    ) {
+        let viewModel = TrendingMovieListViewModel(useCase: useCase)
+        viewModel.onNavigation = onNavigation
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
 
     var body: some View {
@@ -49,14 +51,6 @@ struct TrendingMovieListView: View {
         .onAppear {
             Task { [weak viewModel] in
                 await viewModel?.initialFetch()
-            }
-        }
-        .task {
-            viewModel.setNavigationEventCallBack { [weak router] event in
-                switch event {
-                case .details(let movieID):
-                    router?.navigate(to: .details(id: movieID))
-                }
             }
         }
         .errorAlert(

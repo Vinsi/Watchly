@@ -14,8 +14,10 @@ struct SearchView: View {
     @StateObject var viewModel: SearchViewModel
     @State var hasError = false
 
-    init(useCase: MovieSearchUseCaseType) {
-        _viewModel = StateObject(wrappedValue: SearchViewModel(useCase: useCase))
+    init(useCase: MovieSearchUseCaseType, onNavigationEvent: Closure<SearchViewModel.NavigationEvent>? = nil) {
+        let viewModel = SearchViewModel(useCase: useCase)
+        viewModel.navigationEventCallBack = onNavigationEvent
+        _viewModel = StateObject(wrappedValue: viewModel)
         hasError = hasError
     }
 
@@ -28,16 +30,20 @@ struct SearchView: View {
 
                     SearchBarView(
                         changedText: $viewModel.searchText,
-                        isLoading: $viewModel.isLoading,
+                        isLoading: $viewModel.pageIsLoading,
                         placeholder: Localized.searchPlaceholder,
                         theme: themeManager.currentTheme
                     )
 
-                    if case .success(let movies) = viewModel.dataState {
+                    if case .success = viewModel.dataState {
                         ItemListView(
-                            movies: movies,
+                            movies: viewModel.viewData,
                             onTap: viewModel.onSelect(_:),
-                            onAppear5thLastElement: nil
+                            onAppear5thLastElement: {
+                                Task {
+                                    try await viewModel.pagingManager.fetchNextPage()
+                                }
+                            }
                         )
                     }
 
@@ -55,14 +61,6 @@ struct SearchView: View {
                 hasError = false
             }
         })
-        .task {
-            viewModel.setNavigationEventCallBack { [weak router] event in
-                switch event {
-                case .detail(let movieID):
-                    router?.navigate(to: .details(id: movieID))
-                }
-            }
-        }
 
         .errorAlert(
             isPresented: $hasError,

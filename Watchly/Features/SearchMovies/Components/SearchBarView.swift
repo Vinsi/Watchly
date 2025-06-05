@@ -75,6 +75,7 @@ struct SearchBarView: View {
                 .onTapGesture {
                     UIApplication.shared.dismissKeyboard()
                     searchText = ""
+                    changedText = ""
                 }
         }
         .padding()
