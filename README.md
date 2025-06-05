@@ -13,6 +13,9 @@
 
 ---
 
+## Video
+[![Watch the demo](https://img.youtube.com/vi/8Z3uoknVOW4/hqdefault.jpg)](https://youtu.be/8Z3uoknVOW4)
+
 ## ✨ Features
 
 - ✅ Trending movie list UI
