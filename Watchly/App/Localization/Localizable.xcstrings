@@ -17,6 +17,15 @@
         }
       }
     },
+    "About" : {
+
+    },
+    "App Language" : {
+
+    },
+    "Appearance" : {
+
+    },
     "budget" : {
       "localizations" : {
         "en" : {
@@ -48,6 +57,9 @@
           }
         }
       }
+    },
+    "Dark" : {
+
     },
     "detail_title" : {
       "localizations" : {
@@ -97,6 +109,12 @@
         }
       }
     },
+    "English" : {
+
+    },
+    "Environment" : {
+
+    },
     "error" : {
       "localizations" : {
         "en" : {
@@ -128,6 +146,9 @@
           }
         }
       }
+    },
+    "French" : {
+
     },
     "genres" : {
       "localizations" : {
@@ -161,6 +182,9 @@
         }
       }
     },
+    "Hey there! I’m **Vinsimon** — a curious human and a long-time iOS developer \nwho spends way too much time chasing pixel-perfect UI and obsessing over crash-free code.\n\nI've been building iOS apps since the days when `Objective-C` was cool \nand `storyboards` ruled the world.\nNow I mostly live in `Swift`, dabble in `SwiftUI`, and occasionally whisper sweet things to `Combine`.\n\nI’ve helped ship apps for streaming platforms, grocery delivery, logistics, \nand even a live shopping experience (yes, your next snack deal might be powered by my code).\n\nWhen I'm not coding, I'm probably debugging why my daughter’s toys make more noise than Xcode.\n\nHave a feature idea? A bug to squish? Or just want to say hi?  \n📬 **leo.winc@gmail.com**" : {
+
+    },
     "home_title" : {
       "localizations" : {
         "en" : {
@@ -192,6 +216,12 @@
           }
         }
       }
+    },
+    "Language" : {
+
+    },
+    "Light" : {
+
     },
     "malformed_url" : {
       "localizations" : {
@@ -388,6 +418,21 @@
         }
       }
     },
+    "Settings" : {
+
+    },
+    "System" : {
+
+    },
+    "Terms and Conditions" : {
+
+    },
+    "Terms of Service" : {
+
+    },
+    "Theme" : {
+
+    },
     "unknown" : {
       "localizations" : {
         "en" : {
@@ -400,6 +445,19 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inconnu"
+          }
+        }
+      }
+    },
+    "Version" : {
+
+    },
+    "Welcome to %@, a personal application created and owned by Vinsimon Thulaseedharan.\nBy accessing or using this app, you agree to the following terms.\n\n1. **Personal Use**\nThis app is built and maintained as a personal project. \nIt is not a commercial product and is intended for testing and experimentation purposes only.\n\n2. **Ownership**\nAll features, content, code, and intellectual property \nwithin this app are the personal property of Vinsimon Thulaseedharan. Unauthorized reproduction, distribution,\nor modification is not permitted.\n\n3. **Data & Privacy**\nThis app does not intentionally collect or share any personal data. \nAny inputs or information entered are for local use only and are not stored or transmitted externally.\n\n4. **Disclaimer**\nThis app is provided “as is” with no guarantees of stability, accuracy,\nor fitness for any particular purpose. Use at your own risk.\n\n5. **Contact**\nFor any questions or concerns related to this app, you may reach out directly to:\n\n**Email:** leo.winc@gmail.com\n\n6. **Updates**\nThese terms may change without prior notice, especially as features are updated or refined.\n\nThank you for using %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Welcome to %1$@, a personal application created and owned by Vinsimon Thulaseedharan.\nBy accessing or using this app, you agree to the following terms.\n\n1. **Personal Use**\nThis app is built and maintained as a personal project. \nIt is not a commercial product and is intended for testing and experimentation purposes only.\n\n2. **Ownership**\nAll features, content, code, and intellectual property \nwithin this app are the personal property of Vinsimon Thulaseedharan. Unauthorized reproduction, distribution,\nor modification is not permitted.\n\n3. **Data & Privacy**\nThis app does not intentionally collect or share any personal data. \nAny inputs or information entered are for local use only and are not stored or transmitted externally.\n\n4. **Disclaimer**\nThis app is provided “as is” with no guarantees of stability, accuracy,\nor fitness for any particular purpose. Use at your own risk.\n\n5. **Contact**\nFor any questions or concerns related to this app, you may reach out directly to:\n\n**Email:** leo.winc@gmail.com\n\n6. **Updates**\nThese terms may change without prior notice, especially as features are updated or refined.\n\nThank you for using %2$@."
           }
         }
       }

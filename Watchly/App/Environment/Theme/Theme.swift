@@ -104,8 +104,10 @@ protocol ColorPalette {
     var primary: Color { get }
     var secondary: Color { get }
     var background: Color { get }
+    var backgroundSecondary: Color { get }
     var textPrimary: Color { get }
     var textSecondary: Color { get }
+    var iconColor: Color { get }
 }
 
 struct DefaultColorPalette: ColorPalette {
@@ -113,14 +115,18 @@ struct DefaultColorPalette: ColorPalette {
         primary: Color = Color(#colorLiteral(red: 0.6127355099, green: 0.1732650101, blue: 0.9525056481, alpha: 1)),
         secondary: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
         background: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+        backgroundSecondary: Color = Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)),
         textPrimary: Color = Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)),
-        textSecondary: Color = Color(#colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1))
+        textSecondary: Color = Color(#colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)),
+        iconColor: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
     ) {
         self.primary = primary
         self.secondary = secondary
         self.background = background
         self.textPrimary = textPrimary
         self.textSecondary = textSecondary
+        self.backgroundSecondary = backgroundSecondary
+        self.iconColor = iconColor
     }
 
     let primary: Color
@@ -128,6 +134,8 @@ struct DefaultColorPalette: ColorPalette {
     let background: Color
     let textPrimary: Color
     let textSecondary: Color
+    let backgroundSecondary: Color
+    let iconColor: Color
 }
 
 struct Images {
@@ -155,13 +163,61 @@ struct DefaultTheme: Theme {
     )
 }
 
+struct DarkTheme: Theme {
+    var typography: Typography = .init()
+    var colors: ColorPalette = DefaultColorPalette(
+        primary: Color(#colorLiteral(red: 0.6127355099, green: 0.1732650101, blue: 0.9525056481, alpha: 1)),
+        secondary: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)),
+        background: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)),
+        backgroundSecondary: Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)),
+        textPrimary: Color(#colorLiteral(red: 0.747773007, green: 0.6529044125, blue: 0.9686274529, alpha: 1)),
+        textSecondary: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7995057398)),
+        iconColor: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+    )
+    var spacing: Spacing = .init()
+    var images: Images = .init()
+    var dimensions: Dimensions = .init(
+        buttonHeight: 44,
+        buttonWidth: 250,
+        iconSize: 32,
+        cornerRadius: 10,
+        shortBannerHeight: 20
+    )
+}
+
 // MARK: - **Theme Manager** 🎨
+
+import SwiftUI
 
 /// Manages and updates the app theme dynamically.
 final class ThemeManager: ObservableObject {
-    @Published var currentTheme: Theme
+    @Published var currentTheme: Theme = DefaultTheme()
+    @AppStorage("colorscheme") var selectedTheme: String = "system"
 
-    init(currentTheme: Theme = DefaultTheme()) {
-        self.currentTheme = currentTheme
+    lazy var dark = DarkTheme()
+    lazy var light = DefaultTheme()
+
+    func changeColorScheme(mode: String) {
+        if mode == "dark" {
+            currentTheme = dark
+        } else {
+            currentTheme = light
+        }
+    }
+
+    init() {
+        let saved = UserDefaults.standard.string(forKey: "colorscheme") ?? "system"
+        changeColorScheme(mode: saved)
+    }
+}
+
+extension String {
+
+    var toColorScheme: ColorScheme {
+        switch self {
+        case "light": return .light
+        case "dark": return .dark
+        default: return .light
+        }
     }
 }

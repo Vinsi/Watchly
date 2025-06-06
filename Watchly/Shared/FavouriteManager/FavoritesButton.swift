@@ -40,7 +40,7 @@ final class FavoritesButton: UIButton {
         setImage(image, for: .normal)
         tintColor = isFav ?
             themeManager.currentTheme.colors.primary.toUIColor :
-            themeManager.currentTheme.colors.secondary.toUIColor
+            themeManager.currentTheme.colors.primary.opacity(0.5).toUIColor
         accessibilityLabel = isFav ? "Remove from favorites" : "Add to favorites"
     }
 

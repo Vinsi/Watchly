@@ -11,7 +11,6 @@ import TMDBCore
 struct MovieDetailView: View {
     @EnvironmentObject var environment: AppEnvironment
     @EnvironmentObject var themeManager: ThemeManager
-    @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: MovieDetailViewModel
     @State var hasError: Bool = false
     init(useCase: DetailUseCaseType, movieID: Int) {
@@ -23,16 +22,17 @@ struct MovieDetailView: View {
             switch viewModel.sections {
             case .success(let detailSection):
 
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: themeManager.currentTheme.spacing.small) {
                     ForEach(detailSection, id: \.id) { section in
-                        section.getContent(using: themeManager.currentTheme)
+                        if case .posterBackDrop = section {
+                            section.getContent(using: themeManager.currentTheme)
+
+                        } else {
+                            section.getContent(using: themeManager.currentTheme)
+                                .padding(.horizontal, themeManager.currentTheme.spacing.small)
+                        }
                     }
                 }
-
-            case .fetching:
-
-                HUDLoaderView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
 
             default:
                 EmptyView()
@@ -40,28 +40,15 @@ struct MovieDetailView: View {
         }.task {
             await viewModel.fetchDetails()
         }
+        .overlay(content: {
+            if case .fetching = viewModel.sections {
+                HUDLoaderView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            }
+        })
         .navigationTitle(Localized.detailTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            toolBar()
-        }
-    }
-
-    @ToolbarContentBuilder
-    private func toolBar() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
-            Button(
-                action: {
-                    presentationMode.wrappedValue.dismiss()
-                },
-                label: {
-                    HStack {
-                        Image(themeManager.currentTheme.images.backIcon)
-                    }
-                }
-            )
-        }
+        .withCustomBackButton(backIcon: themeManager.currentTheme.images.backIcon)
     }
 }
 
@@ -125,7 +112,6 @@ extension DetailSection {
                 Spacer()
             }
         }
-        .padding(.horizontal)
     }
 
     @ViewBuilder
@@ -135,9 +121,8 @@ extension DetailSection {
                 .font(.headline)
             Text(movieTitle)
                 .font(theme.typography.body)
-                .foregroundColor(.secondary)
+                .foregroundColor(theme.colors.textSecondary)
         }
-        .padding(.horizontal)
     }
 
     @ViewBuilder
@@ -152,12 +137,11 @@ extension DetailSection {
                     .font(.caption)
                     .padding(.horizontal, theme.spacing.small)
                     .padding(.vertical, theme.spacing.vsmall)
-                    .foregroundColor(theme.colors.secondary)
+                    .foregroundColor(theme.colors.textSecondary)
                     .background(theme.colors.primary.opacity(0.8))
                     .cornerRadius(theme.dimensions.cornerRadius)
             }
         }
-        .padding(.horizontal)
     }
 
     @ViewBuilder
@@ -169,7 +153,6 @@ extension DetailSection {
                 AttributeRow(attribute: attribute.title, value: attribute.value)
             }
         }
-        .padding(.horizontal)
     }
 
     @ViewBuilder
@@ -194,7 +177,6 @@ extension DetailSection {
             .frame(maxWidth: .infinity, minHeight: 50)
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal)
     }
 }
 

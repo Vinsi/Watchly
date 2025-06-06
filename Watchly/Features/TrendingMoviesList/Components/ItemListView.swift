@@ -44,12 +44,13 @@ enum DeviceLayout: Int {
         }
     }
 
-    var columns: [GridItem] {
-        Array(repeating: GridItem(.flexible(), spacing: 16), count: columnsCount - 1) + [GridItem(.flexible())]
+    func columns(spacing: CGFloat) -> [GridItem] {
+        Array(repeating: GridItem(.flexible(), spacing: spacing), count: columnsCount - 1) + [GridItem(.flexible())]
     }
 }
 
 struct ItemListView: View {
+    @EnvironmentObject var themeManager: ThemeManager
     @EnvironmentObject var orientation: DeviceOrientationObserver
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     let movies: [any ListViewDataType]
@@ -68,13 +69,19 @@ struct ItemListView: View {
     }
 
     var columns: [GridItem] {
-        DeviceLayout(size: horizontalSizeClass ?? .compact, isLandScape: orientation.isLandscape).columns
+        DeviceLayout(
+            size: horizontalSizeClass ?? .compact,
+            isLandScape: orientation.isLandscape
+        )
+        .columns(
+            spacing: themeManager.currentTheme.spacing.small
+        )
     }
 
     var body: some View {
         ScrollView {
 
-            LazyVGrid(columns: columns, spacing: 12) {
+            LazyVGrid(columns: columns, spacing: themeManager.currentTheme.spacing.small) {
                 ForEach(movies, id: \.movieID) { index in
                     let movie = index // movies[index]
                     cell(movie)
@@ -89,8 +96,14 @@ struct ItemListView: View {
                         }
                 }
             }
-            .padding(8)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 8)
+//                .stroke(Color.purple.opacity(0.2), lineWidth: 1)
+//        )
+        .padding(.horizontal, themeManager.currentTheme.spacing.small)
+        .padding(.bottom, 0)
     }
 }
 

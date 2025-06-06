@@ -24,7 +24,7 @@ struct AppEntry: App {
     let internetConnectivityChecker = InternetConnectivityCheckerImpl()
 
     let favouriteManager = FavouritesManager(storage: UserDefaultsStorage())
-
+    @State private var showSidePanel = false
     /// 🎨 **Initialize App with Navigation Bar Styling**
     init() {
         internetConnectivityChecker.startMonitoring()
@@ -34,17 +34,45 @@ struct AppEntry: App {
     /// 🏠 **Main Scene - Defines the UI Structure**
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $router.navPath) {
-                RootView().navigateUsingRouter()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            ZStack {
+                NavigationStack(path: $router.navPath) {
+                    RootView().navigateUsingRouter()
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    withAnimation {
+                                        showSidePanel.toggle()
+                                    }
+                                }) {
+                                    Image(systemName: "list.bullet").foregroundColor(Color.purple)
+                                }
+                                .frame(width: 24, height: 24)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .withSidePanel(isPresented: $showSidePanel) {
+                    SettingsView()
+                }
+
+                .environmentObject(AppEnvironment.shared)
+                .environmentObject(themeManager)
+                .environmentObject(router)
+                .environmentObject(internetConnectivityChecker)
+                .environmentObject(favouriteManager)
+                .environmentObject(orientationObserver)
+                .preferredColorScheme(themeManager.selectedTheme.toColorScheme)
+
+                if internetConnectivityChecker.isConnected == false {
+                    let theme = themeManager.currentTheme
+                    // 🚨 No Internet Message
+                    Text(Localized.Error.noInternetConnection).frame(height: theme.dimensions.shortBannerHeight)
+                        .padding()
+                        .foregroundColor(theme.colors.secondary)
+                        .background(RoundedRectangle(cornerRadius: theme.dimensions.cornerRadius)
+                            .fill(themeManager.currentTheme.colors.primary))
+                }
             }
-            .environmentObject(AppEnvironment.shared)
-            .environmentObject(themeManager)
-            .environmentObject(router)
-            .environmentObject(internetConnectivityChecker)
-            .environmentObject(favouriteManager)
-            .environmentObject(orientationObserver)
-            .preferredColorScheme(.light)
         }
     }
 
@@ -82,6 +110,7 @@ struct RootView: View {
 
     @State var isError: Bool = false
     @State var title: String = Router.Tab.list.title
+    @State private var showSidePanel = true
 
     var body: some View {
         ZStack {
@@ -96,19 +125,15 @@ struct RootView: View {
                     .tag(Router.Tab.search)
             }
             .accentColor(themeManager.currentTheme.colors.primary)
-
-            if internet.isConnected == false {
-                let theme = themeManager.currentTheme
-                // 🚨 No Internet Message
-                Text(Localized.Error.noInternetConnection).frame(height: theme.dimensions.shortBannerHeight)
-                    .padding()
-                    .foregroundColor(theme.colors.secondary)
-                    .background(RoundedRectangle(cornerRadius: theme.dimensions.cornerRadius)
-                        .fill(themeManager.currentTheme.colors.primary))
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(title)
+                    .font(.headline)
+                    .foregroundColor(.purple)
             }
         }
-        .navigationTitle($title)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .onChange(of: router.selectedTab) { value in
             title = value.title
         }
@@ -122,5 +147,4 @@ struct RootView: View {
         .environmentObject(AppEnvironment.shared)
         .environmentObject(Router())
         .environmentObject(ThemeManager())
-        .environmentObject(InternetConnectivityCheckerImpl(isMock: true))
 }

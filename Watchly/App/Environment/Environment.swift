@@ -28,7 +28,7 @@ final class AppEnvironment: ObservableObject, BaseURLProvider, TokenProvider {
         }
     }()
 
-    enum Scheme {
+    enum Scheme: String {
         case staging
         case development
         case production
@@ -51,4 +51,9 @@ final class AppEnvironment: ObservableObject, BaseURLProvider, TokenProvider {
     var token: String {
         Bundle.main.getAppConfig(for: .token) ?? ""
     }
+
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+    let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+        ?? Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+        ?? "App"
 }

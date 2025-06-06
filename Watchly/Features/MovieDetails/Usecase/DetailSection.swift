@@ -50,4 +50,12 @@ enum DetailSection: Identifiable {
             return Localized.Attributes.gotowebsite
         }
     }
+
+    func horizontalPadding(padding: CGFloat) -> CGFloat {
+        if case .posterBackDrop = self {
+            return 0
+        } else {
+            return padding
+        }
+    }
 }

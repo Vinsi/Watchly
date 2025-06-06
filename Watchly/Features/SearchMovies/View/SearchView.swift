@@ -34,6 +34,7 @@ struct SearchView: View {
                         placeholder: Localized.searchPlaceholder,
                         theme: themeManager.currentTheme
                     )
+                    .padding(.horizontal, themeManager.currentTheme.spacing.small)
 
                     if case .success = viewModel.dataState {
                         ItemListView(
@@ -46,10 +47,9 @@ struct SearchView: View {
                             }
                         )
                     }
-
-                    Spacer()
                 }
-                .padding(.top, themeManager.currentTheme.spacing.medium)
+                .frame(maxHeight: .infinity, alignment: .top)
+                .padding(.top, themeManager.currentTheme.spacing.small)
             }
         }
 

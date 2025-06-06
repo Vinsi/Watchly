@@ -13,9 +13,8 @@ struct MovieBoxView: View {
     let title: String
     let releaseDate: String?
     let rating: Double
-    // let width: CGFloat
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: themeManager.currentTheme.spacing.small) {
 
             ZStack(alignment: .bottomLeading) {
 
@@ -37,7 +36,7 @@ struct MovieBoxView: View {
                         .font(.headline)
                         .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
-                        .foregroundColor(.primary)
+                        .foregroundColor(themeManager.currentTheme.colors.textPrimary)
 
                     Spacer()
                 }
@@ -45,24 +44,22 @@ struct MovieBoxView: View {
                 HStack {
                     Text(releaseDate ?? "")
                         .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(themeManager.currentTheme.colors.textSecondary)
                     Spacer()
                 }
 
                 Spacer().frame(minHeight: 0)
             }
             .padding(.top, 20)
-            .padding([.horizontal, .bottom], 8)
+            .padding([.horizontal, .bottom], themeManager.currentTheme.spacing.small)
         }
 
         .clipShape(RoundedRectangle(cornerRadius: themeManager.currentTheme.dimensions.cornerRadius))
         .background(
             RoundedRectangle(cornerRadius: themeManager.currentTheme.dimensions.cornerRadius)
-                .fill(Color.white)
+                .fill(themeManager.currentTheme.colors.secondary)
                 .shadow(color: themeManager.currentTheme.colors.primary.opacity(0.2), radius: 2)
         )
-
-        .frame(height: 350)
     }
 }
 

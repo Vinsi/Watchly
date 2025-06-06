@@ -13,7 +13,7 @@ struct HUDLoaderView: View {
         ZStack {
 
             Rectangle()
-                .fill(Color.white)
+                .fill(themeManager.currentTheme.colors.secondary)
                 .frame(width: 50, height: 50)
                 .background(Color.blue)
                 .cornerRadius(25)

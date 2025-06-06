@@ -9,7 +9,7 @@ import SwiftUI
 @ViewBuilder
 func placeholderImage(theme: Theme) -> some View {
     Rectangle()
-        .foregroundColor(Color.gray)
+        .foregroundColor(theme.colors.backgroundSecondary)
         .opacity(0.3)
         .shimmer()
 }
@@ -21,6 +21,7 @@ extension View {
 }
 
 struct ShimmerModifier: ViewModifier {
+    @EnvironmentObject var themeManager: ThemeManager
     @State private var offset: CGFloat = -200
     @State private var viewSize: CGSize = .zero
 
@@ -51,9 +52,9 @@ struct ShimmerModifier: ViewModifier {
     private var shimmerOverlay: some View {
         LinearGradient(
             gradient: Gradient(colors: [
-                Color.white.opacity(0.0),
+                themeManager.currentTheme.colors.secondary.opacity(0.0),
                 Color.black.opacity(0.1),
-                Color.white.opacity(0.0),
+                themeManager.currentTheme.colors.secondary.opacity(0.0),
             ]),
             startPoint: .top,
             endPoint: .bottom

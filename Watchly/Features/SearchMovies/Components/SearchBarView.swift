@@ -89,7 +89,7 @@ struct SearchBarView: View {
                     y: 0
                 )
         )
-        .padding(.horizontal, theme.spacing.medium)
+
         .padding([.bottom], .zero)
     }
 }
