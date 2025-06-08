@@ -22,7 +22,7 @@ struct MovieDetailView: View {
             switch viewModel.sections {
             case .success(let detailSection):
 
-                VStack(alignment: .leading, spacing: themeManager.currentTheme.spacing.small) {
+                VStack(alignment: .leading, spacing: themeManager.currentTheme.spacing.medium) {
                     ForEach(detailSection, id: \.id) { section in
                         if case .posterBackDrop = section {
                             section.getContent(using: themeManager.currentTheme)
@@ -46,6 +46,11 @@ struct MovieDetailView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             }
         })
+        .onChange(of: LanguageManager.shared.selectedLanguage) { _ in
+            Task {
+                await viewModel.fetchDetails()
+            }
+        }
         .navigationTitle(Localized.detailTitle)
         .navigationBarTitleDisplayMode(.inline)
         .withCustomBackButton(backIcon: themeManager.currentTheme.images.backIcon)
@@ -115,7 +120,7 @@ extension DetailSection {
     }
 
     @ViewBuilder
-    private func overview(_ title: String, movieTitle: String, theme: Theme) -> some View {
+    private func overview(_ title: LocalizedStringKey, movieTitle: String, theme: Theme) -> some View {
         VStack(alignment: .leading, spacing: theme.spacing.small) {
             Text(title)
                 .font(.headline)
@@ -126,7 +131,7 @@ extension DetailSection {
     }
 
     @ViewBuilder
-    private func genre(_ title: String, genres: [Genre], theme: Theme) -> some View {
+    private func genre(_ title: LocalizedStringKey, genres: [Genre], theme: Theme) -> some View {
         VStack(alignment: .leading, spacing: theme.spacing.small) {
 
             Text(title)
@@ -137,7 +142,7 @@ extension DetailSection {
                     .font(.caption)
                     .padding(.horizontal, theme.spacing.small)
                     .padding(.vertical, theme.spacing.vsmall)
-                    .foregroundColor(theme.colors.textSecondary)
+                    .foregroundColor(theme.colors.textOnTags)
                     .background(theme.colors.primary.opacity(0.8))
                     .cornerRadius(theme.dimensions.cornerRadius)
             }
@@ -145,43 +150,45 @@ extension DetailSection {
     }
 
     @ViewBuilder
-    private func details(title: String, _ attributes: [(title: String, value: String)], theme: Theme) -> some View {
+    private func details(
+        title: LocalizedStringKey,
+        _ attributes: [(title: LocalizedStringKey, value: String)],
+        theme: Theme
+    ) -> some View {
         VStack(alignment: .leading, spacing: theme.spacing.small) {
             Text(title)
                 .font(.headline)
-            ForEach(attributes, id: \.0) { attribute in
+            ForEach(attributes.indices, id: \.self) { index in
+                let attribute = attributes[index]
                 AttributeRow(attribute: attribute.title, value: attribute.value)
             }
         }
     }
 
     @ViewBuilder
-    private func link(linkTitle: String, link: URL, theme: Theme) -> some View {
-        VStack(alignment: .leading, spacing: theme.spacing.small) {
-            Link(destination: link) {
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(
-                        style: StrokeStyle(
-                            lineWidth: 1,
-                            dash: [6] // For dotted/dashed style
-                        )
+    private func link(linkTitle: LocalizedStringKey, link: URL, theme: Theme) -> some View {
+        Link(destination: link) {
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(
+                    style: StrokeStyle(
+                        lineWidth: 1,
+                        dash: [6] // For dotted/dashed style
                     )
-                    .foregroundColor(theme.colors.textSecondary.opacity(0.4))
-                    .overlay {
-                        Text(linkTitle)
-                            .font(theme.typography.cellTitleLarge).bold()
-                            .foregroundColor(theme.colors.primary)
-                            .padding()
-                    }
-            }
-            .frame(maxWidth: .infinity, minHeight: 50)
+                )
+                .foregroundColor(theme.colors.textSecondary.opacity(0.4))
+                .overlay {
+                    Text(linkTitle)
+                        .font(theme.typography.cellTitleLarge).bold()
+                        .foregroundColor(theme.colors.primary)
+                        .padding()
+                }
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, minHeight: 50)
     }
 }
 
 struct AttributeRow: View {
-    let attribute: String
+    let attribute: LocalizedStringKey
     @EnvironmentObject private var theme: ThemeManager
     let value: String?
 

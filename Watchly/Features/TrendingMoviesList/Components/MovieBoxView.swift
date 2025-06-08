@@ -58,7 +58,7 @@ struct MovieBoxView: View {
         .background(
             RoundedRectangle(cornerRadius: themeManager.currentTheme.dimensions.cornerRadius)
                 .fill(themeManager.currentTheme.colors.secondary)
-                .shadow(color: themeManager.currentTheme.colors.primary.opacity(0.2), radius: 2)
+                .shadow(color: themeManager.currentTheme.colors.primary.opacity(0.6), radius: 2)
         )
     }
 }

@@ -18,7 +18,7 @@ final class Router: ObservableObject {
         case list
         case search
 
-        var title: String {
+        var title: LocalizedStringKey {
             switch self {
             case .list: Localized.homeTitle
             case .search: Localized.searchTitle
@@ -48,7 +48,9 @@ extension Router.Destination {
     var toView: some View {
         switch self {
         case .details(let movieID):
-            DetailCoordinator(environment: AppEnvironment.shared, movieID: movieID).start()
+            DetailCoordinator(environment: AppEnvironment.shared,
+                              languageManager: LanguageManager.shared,
+                              movieID: movieID).start()
         }
     }
 }

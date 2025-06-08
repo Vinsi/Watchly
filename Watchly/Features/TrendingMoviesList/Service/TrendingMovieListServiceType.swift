@@ -27,9 +27,15 @@ struct TrendingMovieListServiceImpl: TrendingMovieListServiceType {
     let tokenProvider: TokenProvider
     var network: NetworkProcesserType
     var cacheFacilitator: EndPointCacheFaciltator<TrendingMoviesEndPoint>
+    let language: LanguageManager
 
     func getAll(page: Int, canUseCache: Bool) async throws -> TrendingMoviesResponse {
-        let endPoint = TrendingMoviesEndPoint(baseURL: baseURLProvider.baseURL, token: tokenProvider.token, page: page)
+        let endPoint = TrendingMoviesEndPoint(
+            baseURL: baseURLProvider.baseURL,
+            token: tokenProvider.token,
+            page: page,
+            language: language.selectedLanguage.tmdbLang
+        )
         if canUseCache {
             return try await cacheFacilitator.executeWithCache(endPoint: endPoint, network: network)
         } else {

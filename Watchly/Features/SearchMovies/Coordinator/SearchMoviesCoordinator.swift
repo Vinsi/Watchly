@@ -11,18 +11,19 @@ import TMDBCore
 struct SearchMoviesCoordinator: Coordinator {
     let environment: AppEnvironment
     let router: Router
-
     private let useCase: MovieSearchUseCaseType
-
-    init(environment: AppEnvironment, router: Router) {
+    private let languageManager: LanguageManager
+    init(environment: AppEnvironment, router: Router, languageManager: LanguageManager) {
         self.environment = environment
         self.router = router
+        self.languageManager = languageManager
         let network = NetworkProcesserTypeImpl()
         let service = MovieSearchServiceImpl(
             network: network,
             baseURLProvider: environment,
             tokenProvider: environment,
-            cacheFacilitator: EndPointCacheFaciltator<SearchMoviesEndPoint>()
+            cacheFacilitator: EndPointCacheFaciltator<SearchMoviesEndPoint>(),
+            language: languageManager
         )
         useCase = MovieSearchUseCaseImpl(service: service)
     }

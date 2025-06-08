@@ -11,6 +11,7 @@ struct TrendingMovieListView: View {
     @EnvironmentObject private var router: Router
     @EnvironmentObject private var environment: AppEnvironment
     @EnvironmentObject private var themeManager: ThemeManager
+    @EnvironmentObject private var languageManger: LanguageManager
     @StateObject var viewModel: TrendingMovieListViewModel
 
     init(
@@ -58,6 +59,11 @@ struct TrendingMovieListView: View {
             errorMessage: viewModel.errorMessage,
             retryAction: viewModel.retry
         )
+        .onChange(of: languageManger.selectedLanguage) { _ in
+            Task {
+                await viewModel.loadFromStart()
+            }
+        }
 
         .tabItem {
             Label(Localized.homeTitle,

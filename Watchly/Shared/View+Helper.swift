@@ -16,9 +16,12 @@ extension View {
 struct AppBackground: View {
     @EnvironmentObject var themeManager: ThemeManager
     var body: some View {
-        Image(themeManager.currentTheme.images.pattern)
-            .resizable(resizingMode: .tile)
-            .opacity(0.03)
+        ZStack {
+
+            Image(themeManager.currentTheme.images.pattern)
+                .resizable(resizingMode: .tile)
+                .opacity(0.03)
+        }
     }
 }
 
@@ -38,5 +41,12 @@ extension View {
         } message: { error in
             Text(error)
         }
+    }
+}
+
+struct ProfileBackGround: View {
+    @EnvironmentObject var themeManager: ThemeManager
+    var body: some View {
+        ZStack {}
     }
 }

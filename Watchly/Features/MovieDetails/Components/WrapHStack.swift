@@ -29,7 +29,8 @@ struct WrapHStack<Data: RandomAccessCollection, Content: View>: View where Data.
         return ZStack(alignment: .topLeading) {
             ForEach(self.data) { item in
                 self.content(item)
-                    .padding([.horizontal, .vertical], 4)
+                    .padding([.vertical], 4)
+                    .padding(.trailing, 8)
                     .alignmentGuide(.leading) { dimension in
                         if abs(width - dimension.width) > geometry.size.width {
                             width = 0

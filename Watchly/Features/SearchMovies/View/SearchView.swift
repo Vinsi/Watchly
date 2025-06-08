@@ -11,6 +11,7 @@ struct SearchView: View {
     @EnvironmentObject private var router: Router
     @EnvironmentObject private var environment: AppEnvironment
     @EnvironmentObject private var themeManager: ThemeManager
+    @EnvironmentObject private var langManager: LanguageManager
     @StateObject var viewModel: SearchViewModel
     @State var hasError = false
 
@@ -61,7 +62,9 @@ struct SearchView: View {
                 hasError = false
             }
         })
-
+        .onChange(of: langManager.selectedLanguage) { _ in
+            viewModel.searchText = ""
+        }
         .errorAlert(
             isPresented: $hasError,
             errorMessage: viewModel.dataState.errorMessage,

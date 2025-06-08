@@ -12,17 +12,18 @@ struct TrendingMovieListCoordinator: Coordinator {
     let environment: AppEnvironment
     let router: Router
     private let useCase: GetTrendingMoviesUseCaseType
-
-    init(environment: AppEnvironment, router: Router) {
+    let languageManager: LanguageManager
+    init(environment: AppEnvironment, router: Router, languageManager: LanguageManager) {
         self.environment = environment
         self.router = router
         let network = NetworkProcesserTypeImpl()
-
+        self.languageManager = languageManager
         let service = TrendingMovieListServiceImpl(
             baseURLProvider: environment,
             tokenProvider: environment,
             network: network,
-            cacheFacilitator: EndPointCacheFaciltator<TrendingMoviesEndPoint>()
+            cacheFacilitator: EndPointCacheFaciltator<TrendingMoviesEndPoint>(),
+            language: languageManager
         )
         useCase = GetTrendingMoviesUseCaseImpl(service: service)
     }

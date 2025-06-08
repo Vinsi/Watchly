@@ -38,7 +38,9 @@ final class TrendingMovieListViewModel: ObservableObject {
     }
 
     func loadFromStart() async {
-        pagingManager.reset()
+        await MainActor.run {
+            pagingManager.reset()
+        }
         await fetch()
     }
 

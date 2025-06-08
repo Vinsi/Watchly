@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICore
 import TMDBCore
 
 protocol DetailUseCaseType {
@@ -34,7 +35,7 @@ struct DetailUseCaseImpl: DetailUseCaseType {
         return sections
     }
 
-    private func createAttributes(details: MovieDetails) -> [(String, String)] {
+    private func createAttributes(details: MovieDetails) -> [(LocalizedStringKey, String)] {
         [
             (Localized.Attributes.releaseDate, details.releaseDate),
             (Localized.Attributes.runtime, details.runtime.asRuntimeFormat),
@@ -43,7 +44,7 @@ struct DetailUseCaseImpl: DetailUseCaseType {
             (Localized.Attributes.language, details.originalLanguage),
             (Localized.Attributes.production, details.productionCompanies.map { $0.name }.joined(separator: ", ")),
         ]
-        .compactMap { value -> (String, String)? in
+        .compactMap { value -> (LocalizedStringKey, String)? in
             guard let text = value.1 else {
                 return nil
             }

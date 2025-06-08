@@ -14,23 +14,23 @@
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.abi.json</key>
 		<data>
-		I3HTAwKrfB6d01nnXACiTaELv6k=
+		3rs13Kfq3fxFV/be4jWWdCxjAAk=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.private.swiftinterface</key>
 		<data>
-		3UR+/DqHsZXZuhESDjspNzN9mgc=
+		e+5SQ8gs6cksMvq4fWh/PRwpu4c=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.swiftdoc</key>
 		<data>
-		Nb/af98gHw+K7MdxMiUeiLvJWw8=
+		uejy4GYXBZ2cg222lxbE2Qmog0Q=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.swiftinterface</key>
 		<data>
-		3UR+/DqHsZXZuhESDjspNzN9mgc=
+		e+5SQ8gs6cksMvq4fWh/PRwpu4c=
 		</data>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.swiftmodule</key>
 		<data>
-		FggvhfTJDqtsNuBh/VGv6jjDhJA=
+		qf22yyAi2E6fdZ6hfNCijZ70bcw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -50,35 +50,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7rmoV5KD/25TRHQ1J1dkJLxmNazOeEXBnvPQUnAbwpo=
+			mVN0/X3ijhGsK1lDQi7l3DZ3iyiV7VmkeEZdiHhzaGA=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sf+Xcy0pB3Y/7tJNxkeXNC+L/7xS5fgXj0X+TGiIpnY=
+			pt9pf/8H1wSg9UMlTMdrUjgtFTUd6ZYj9W2SDpjTscI=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nWLdCSPtX/4b7HwKrVH5R3axOjKMpPQcPyb/9JOHmh0=
+			v0FgazrqRGTy3sl3aVpJCiWdP/wkj4imTFGiapAAzmI=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sf+Xcy0pB3Y/7tJNxkeXNC+L/7xS5fgXj0X+TGiIpnY=
+			pt9pf/8H1wSg9UMlTMdrUjgtFTUd6ZYj9W2SDpjTscI=
 			</data>
 		</dict>
 		<key>Modules/TMDBCore.swiftmodule/arm64-apple-xros.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Qk6pgPlRbw78IaIaoOSCHG19R70cgzjuFEe3wf6tgfE=
+			ZK7o4M1t4NRNbqrtlXdSWnbtX8SkYls1DKv06tDufOY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

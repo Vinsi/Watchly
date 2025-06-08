@@ -10,6 +10,7 @@ import TMDBCore
 
 struct DetailCoordinator: Coordinator {
     let environment: AppEnvironment
+    let languageManager: LanguageManager
     let movieID: Int
 
     func start() -> some View {
@@ -18,7 +19,8 @@ struct DetailCoordinator: Coordinator {
             network: network,
             baseURLProvider: environment,
             tokenProvider: environment,
-            cachefacilitator: EndPointCacheFaciltator(cache: CacheManager.shared.movieDetailsResponseCache)
+            cachefacilitator: EndPointCacheFaciltator(cache: CacheManager.shared.movieDetailsResponseCache),
+            language: languageManager
         )
         let useCase = DetailUseCaseImpl(service: service)
         return MovieDetailView(useCase: useCase, movieID: movieID)

@@ -1,6 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        }
+      }
+    },
     "%lld%%" : {
       "localizations" : {
         "en" : {
@@ -17,14 +33,53 @@
         }
       }
     },
-    "About" : {
-
+    "about.me.content%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👋 Welcome to %@ !\n\nHey there! I’m Vinsi a curious human and long-time iOS developer who spends way too much time chasing pixel-perfect UI and obsessing over crash-free code.\n\nI’ve been crafting iOS apps since the days when Objective-C was all the rage and storyboards ruled the interface world. These days, you’ll find me deep in Swift, experimenting with SwiftUI, and whispering sweet nothings to Combine.\n\nOver the years, I’ve had the privilege of building apps for:\n\t•\t🎬 Streaming platforms\n\t•\t🛒 Grocery delivery\n\t•\t🚚 Logistics\n\t•\t🛍️ Live shopping (yes, that snack deal you just grabbed might’ve had a little help from my code)\n\nWhen I’m not wrestling with layout bugs or optimising performance, I’m probably debugging why my daughter’s toys make more noise than Xcode.\n\nGot a feature idea? A bug to squash? Or just want to say hi?\n\nleo.winc@gmail.com\n\nLet’s build something amazing  or at least crash-free together.\n"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👋 Bienvenue %@ !\n\nSalut ! Je suis Vinsi, un humain curieux et un développeur iOS de longue date qui passe beaucoup trop de temps à courir après une interface utilisateur parfaite pour les pixels et à être obsédé par le code sans plantage. Je crée des applications iOS depuis l'époque où Objective‑C faisait fureur et où les storyboards régnaient sur le monde de l'interface.\n\nCes jours‑ci, vous me trouverez profondément dans Swift, expérimentant SwiftUI et chuchotant des choses douces à combiner. Au fil des ans, j'ai eu le privilège de créer des applications pour :\n • 🎬 Plateformes de streaming\n • 🛒 Livraison d'épicerie\n • 🚚 Logistique\n • 🛍️ Achats en direct (oui, cette offre de collation que vous venez de saisir a peut‑être eu un peu d'aide de mon code)\n\nLorsque je ne suis pas aux prises avec des bugs de mise en page ou que je n'optimise pas les performances, je débogue probablement pourquoi les jouets de ma fille font plus de bruit que Xcode.\n\nVous avez une idée de fonctionnalité ? Un bug à écraser ? Ou voulez‑vous simplement dire bonjour ? leo.winc@gmail.com\n\nConstruisons quelque chose d'incroyable ou à tout le moins sans accident ensemble."
+          }
+        }
+      }
     },
-    "App Language" : {
-
+    "app.language" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Language"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue de l'application"
+          }
+        }
+      }
     },
-    "Appearance" : {
-
+    "appearence" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearence"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparence"
+          }
+        }
+      }
     },
     "budget" : {
       "localizations" : {
@@ -42,26 +97,7 @@
         }
       }
     },
-    "connection_error" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Connection Error"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur de connexion"
-          }
-        }
-      }
-    },
-    "Dark" : {
-
-    },
-    "detail_title" : {
+    "detail.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -93,27 +129,21 @@
         }
       }
     },
-    "disconnected" : {
+    "environment.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Disconnected"
+            "value" : "Environment"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Déconnecté"
+            "value" : "Environnement"
           }
         }
       }
-    },
-    "English" : {
-
-    },
-    "Environment" : {
-
     },
     "error" : {
       "localizations" : {
@@ -131,7 +161,39 @@
         }
       }
     },
-    "failed_to_decode" : {
+    "error.connection" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connection Error"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur de connexion"
+          }
+        }
+      }
+    },
+    "error.disconnected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disconnected"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Décousu"
+          }
+        }
+      }
+    },
+    "error.failedtodecode" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -142,13 +204,58 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Échec du décodage: %@"
+            "value" : "Échec du décodage : %@"
           }
         }
       }
     },
-    "French" : {
-
+    "error.malformed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Malformed URL"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL mal formée"
+          }
+        }
+      }
+    },
+    "error.nointernet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Internet Connection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de connexion Internet"
+          }
+        }
+      }
+    },
+    "error.unknown" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inconnu"
+          }
+        }
+      }
     },
     "genres" : {
       "localizations" : {
@@ -182,10 +289,7 @@
         }
       }
     },
-    "Hey there! I’m **Vinsimon** — a curious human and a long-time iOS developer \nwho spends way too much time chasing pixel-perfect UI and obsessing over crash-free code.\n\nI've been building iOS apps since the days when `Objective-C` was cool \nand `storyboards` ruled the world.\nNow I mostly live in `Swift`, dabble in `SwiftUI`, and occasionally whisper sweet things to `Combine`.\n\nI’ve helped ship apps for streaming platforms, grocery delivery, logistics, \nand even a live shopping experience (yes, your next snack deal might be powered by my code).\n\nWhen I'm not coding, I'm probably debugging why my daughter’s toys make more noise than Xcode.\n\nHave a feature idea? A bug to squish? Or just want to say hi?  \n📬 **leo.winc@gmail.com**" : {
-
-    },
-    "home_title" : {
+    "home.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -217,43 +321,50 @@
         }
       }
     },
-    "Language" : {
-
-    },
-    "Light" : {
-
-    },
-    "malformed_url" : {
+    "language.english" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Malformed URL"
+            "value" : "English"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "URL mal formée"
+            "value" : "English"
+          }
+        }
+      }
+    },
+    "language.french" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "French"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "French"
           }
         }
       }
     },
     "moviebox" : {
-
-    },
-    "no_internet_connection" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No Internet Connection"
+            "value" : "moviebox"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pas de connexion Internet"
+            "value" : "moviebox"
           }
         }
       }
@@ -290,7 +401,7 @@
         }
       }
     },
-    "release_date" : {
+    "release.date" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -354,55 +465,55 @@
         }
       }
     },
-    "search_button" : {
+    "search.placeholder" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search by movie name"
+            "value" : "Search for movies"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recherche par nom de film"
+            "value" : "Rechercher des films"
           }
         }
       }
     },
-    "search_placeholder" : {
+    "search.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search movie"
+            "value" : "Search Movies"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rechercher un film"
+            "value" : "Rechercher des films"
           }
         }
       }
     },
-    "search_title" : {
+    "setting.aboutme" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search Movie"
+            "value" : "About Me"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rechercher un film"
+            "value" : "À propos de moi"
           }
         }
       }
     },
-    "setting_title" : {
+    "setting.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -418,46 +529,34 @@
         }
       }
     },
-    "Settings" : {
-
-    },
-    "System" : {
-
-    },
-    "Terms and Conditions" : {
-
-    },
-    "Terms of Service" : {
-
-    },
-    "Theme" : {
-
-    },
-    "unknown" : {
+    "theme" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unknown"
+            "value" : "Theme"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inconnu"
+            "value" : "Thème"
           }
         }
       }
     },
-    "Version" : {
-
-    },
-    "Welcome to %@, a personal application created and owned by Vinsimon Thulaseedharan.\nBy accessing or using this app, you agree to the following terms.\n\n1. **Personal Use**\nThis app is built and maintained as a personal project. \nIt is not a commercial product and is intended for testing and experimentation purposes only.\n\n2. **Ownership**\nAll features, content, code, and intellectual property \nwithin this app are the personal property of Vinsimon Thulaseedharan. Unauthorized reproduction, distribution,\nor modification is not permitted.\n\n3. **Data & Privacy**\nThis app does not intentionally collect or share any personal data. \nAny inputs or information entered are for local use only and are not stored or transmitted externally.\n\n4. **Disclaimer**\nThis app is provided “as is” with no guarantees of stability, accuracy,\nor fitness for any particular purpose. Use at your own risk.\n\n5. **Contact**\nFor any questions or concerns related to this app, you may reach out directly to:\n\n**Email:** leo.winc@gmail.com\n\n6. **Updates**\nThese terms may change without prior notice, especially as features are updated or refined.\n\nThank you for using %@." : {
+    "version.title" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Welcome to %1$@, a personal application created and owned by Vinsimon Thulaseedharan.\nBy accessing or using this app, you agree to the following terms.\n\n1. **Personal Use**\nThis app is built and maintained as a personal project. \nIt is not a commercial product and is intended for testing and experimentation purposes only.\n\n2. **Ownership**\nAll features, content, code, and intellectual property \nwithin this app are the personal property of Vinsimon Thulaseedharan. Unauthorized reproduction, distribution,\nor modification is not permitted.\n\n3. **Data & Privacy**\nThis app does not intentionally collect or share any personal data. \nAny inputs or information entered are for local use only and are not stored or transmitted externally.\n\n4. **Disclaimer**\nThis app is provided “as is” with no guarantees of stability, accuracy,\nor fitness for any particular purpose. Use at your own risk.\n\n5. **Contact**\nFor any questions or concerns related to this app, you may reach out directly to:\n\n**Email:** leo.winc@gmail.com\n\n6. **Updates**\nThese terms may change without prior notice, especially as features are updated or refined.\n\nThank you for using %2$@."
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
           }
         }
       }

@@ -38,6 +38,25 @@ public struct NetworkProcesserTypeImpl : TMDBCore.NetworkProcesserType {
   final public func makeUrlRequest() throws -> Foundation.URLRequest
   @objc deinit
 }
+public enum TMDBLanguage : Swift.String, Swift.CaseIterable, Swift.Identifiable {
+  case english
+  case french
+  case spanish
+  public var id: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [TMDBCore.TMDBLanguage]
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias ID = Swift.String
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [TMDBCore.TMDBLanguage] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public protocol URLDataTaskProvider {
   func data(for request: Foundation.URLRequest) async throws -> (Foundation.Data, Foundation.URLResponse)
 }
@@ -46,17 +65,17 @@ extension Foundation.URLSession : TMDBCore.URLDataTaskProvider {
 public struct MovieDetailEndPoint : TMDBCore.EndPointType {
   public typealias Response = TMDBCore.MovieDetails
   public let request: TMDBCore.RequestBuilder
-  public init(baseURL: Swift.String, token: Swift.String, id: Swift.Int, page: Swift.Int = 0)
+  public init(baseURL: Swift.String, token: Swift.String, id: Swift.Int, page: Swift.Int = 0, language: TMDBCore.TMDBLanguage = .english)
 }
 public struct SearchMoviesEndPoint : TMDBCore.EndPointType {
   public let request: TMDBCore.RequestBuilder
   public typealias Response = TMDBCore.SearchResultsResponse
-  public init(baseURL: Swift.String, token: Swift.String, query: Swift.String, page: Swift.Int = 1)
+  public init(baseURL: Swift.String, token: Swift.String, query: Swift.String, page: Swift.Int = 1, language: TMDBCore.TMDBLanguage = .english)
 }
 public struct TrendingMoviesEndPoint : TMDBCore.EndPointType {
   public typealias Response = TMDBCore.TrendingMoviesResponse
   public let request: TMDBCore.RequestBuilder
-  public init(baseURL: Swift.String, token: Swift.String, page: Swift.Int = 0)
+  public init(baseURL: Swift.String, token: Swift.String, page: Swift.Int = 0, language: TMDBCore.TMDBLanguage = .english)
 }
 final public class LogWriter {
   public struct Levels : Swift.OptionSet {
@@ -486,6 +505,9 @@ public struct Movie : Swift.Codable, Swift.Identifiable, Swift.Equatable {
 public enum TMDBCoreConstants {
   public static let imageBasePath: Swift.String
 }
+extension TMDBCore.TMDBLanguage : Swift.Equatable {}
+extension TMDBCore.TMDBLanguage : Swift.Hashable {}
+extension TMDBCore.TMDBLanguage : Swift.RawRepresentable {}
 extension TMDBCore.LoggerStatus : Swift.Equatable {}
 extension TMDBCore.LoggerStatus : Swift.Hashable {}
 extension TMDBCore.LoggerStatus : Swift.RawRepresentable {}

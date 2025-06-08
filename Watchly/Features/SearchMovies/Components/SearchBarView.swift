@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlaceholderStyle: ViewModifier {
     var showPlaceholder: Bool
-    var placeholder: String
+    var placeholder: LocalizedStringKey
     var placeholderColor: Color
 
     func body(content: Content) -> some View {
@@ -30,7 +30,7 @@ struct SearchBarView: View {
     @State private var isEditing: Bool = false
     @Binding var isLoading: Bool
     @FocusState private var isFocused: Bool
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     let theme: Theme
 
     var body: some View {

@@ -20,7 +20,7 @@ struct SidePanelModifier<SidePanel: View>: ViewModifier {
                 .disabled(isPresented)
 
             if isPresented {
-                Color.black.opacity(0.4)
+                Color.purple.opacity(0.1).shadow(color: .purple, radius: 2).blur(radius: 3)
                     .ignoresSafeArea()
                     .onTapGesture {
                         withAnimation {
@@ -32,6 +32,14 @@ struct SidePanelModifier<SidePanel: View>: ViewModifier {
             sidePanel()
                 .frame(width: panelWidth)
                 .background(Color(.systemBackground))
+                .overlay(
+                    Rectangle()
+                        .frame(width: 1)
+                        .foregroundColor(Color.purple.opacity(0.8))
+                        .ignoresSafeArea(),
+
+                    alignment: .leading
+                )
                 .offset(x: isPresented ? 0 : panelWidth + dragOffset)
                 .gesture(
                     DragGesture()

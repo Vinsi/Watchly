@@ -743,6 +743,416 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "TMDBLanguage",
+        "printedName": "TMDBLanguage",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "english",
+            "printedName": "english",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TMDBCore.TMDBLanguage.Type) -> TMDBCore.TMDBLanguage",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMDBLanguage",
+                    "printedName": "TMDBCore.TMDBLanguage",
+                    "usr": "s:8TMDBCore12TMDBLanguageO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TMDBCore.TMDBLanguage.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMDBLanguage",
+                        "printedName": "TMDBCore.TMDBLanguage",
+                        "usr": "s:8TMDBCore12TMDBLanguageO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8TMDBCore12TMDBLanguageO7englishyA2CmF",
+            "mangledName": "$s8TMDBCore12TMDBLanguageO7englishyA2CmF",
+            "moduleName": "TMDBCore"
+          },
+          {
+            "kind": "Var",
+            "name": "french",
+            "printedName": "french",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TMDBCore.TMDBLanguage.Type) -> TMDBCore.TMDBLanguage",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMDBLanguage",
+                    "printedName": "TMDBCore.TMDBLanguage",
+                    "usr": "s:8TMDBCore12TMDBLanguageO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TMDBCore.TMDBLanguage.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMDBLanguage",
+                        "printedName": "TMDBCore.TMDBLanguage",
+                        "usr": "s:8TMDBCore12TMDBLanguageO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8TMDBCore12TMDBLanguageO6frenchyA2CmF",
+            "mangledName": "$s8TMDBCore12TMDBLanguageO6frenchyA2CmF",
+            "moduleName": "TMDBCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "spanish",
+            "printedName": "spanish",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TMDBCore.TMDBLanguage.Type) -> TMDBCore.TMDBLanguage",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMDBLanguage",
+                    "printedName": "TMDBCore.TMDBLanguage",
+                    "usr": "s:8TMDBCore12TMDBLanguageO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TMDBCore.TMDBLanguage.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMDBLanguage",
+                        "printedName": "TMDBCore.TMDBLanguage",
+                        "usr": "s:8TMDBCore12TMDBLanguageO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8TMDBCore12TMDBLanguageO7spanishyA2CmF",
+            "mangledName": "$s8TMDBCore12TMDBLanguageO7spanishyA2CmF",
+            "moduleName": "TMDBCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TMDBCore12TMDBLanguageO2idSSvp",
+            "mangledName": "$s8TMDBCore12TMDBLanguageO2idSSvp",
+            "moduleName": "TMDBCore",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TMDBCore12TMDBLanguageO2idSSvg",
+                "mangledName": "$s8TMDBCore12TMDBLanguageO2idSSvg",
+                "moduleName": "TMDBCore",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TMDBCore.TMDBLanguage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMDBLanguage",
+                    "printedName": "TMDBCore.TMDBLanguage",
+                    "usr": "s:8TMDBCore12TMDBLanguageO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8TMDBCore12TMDBLanguageO8rawValueACSgSS_tcfc",
+            "mangledName": "$s8TMDBCore12TMDBLanguageO8rawValueACSgSS_tcfc",
+            "moduleName": "TMDBCore",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TMDBCore12TMDBLanguageO8rawValueSSvp",
+            "mangledName": "$s8TMDBCore12TMDBLanguageO8rawValueSSvp",
+            "moduleName": "TMDBCore",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TMDBCore12TMDBLanguageO8rawValueSSvg",
+                "mangledName": "$s8TMDBCore12TMDBLanguageO8rawValueSSvg",
+                "moduleName": "TMDBCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[TMDBCore.TMDBLanguage]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMDBLanguage",
+                    "printedName": "TMDBCore.TMDBLanguage",
+                    "usr": "s:8TMDBCore12TMDBLanguageO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8TMDBCore12TMDBLanguageO8allCasesSayACGvpZ",
+            "mangledName": "$s8TMDBCore12TMDBLanguageO8allCasesSayACGvpZ",
+            "moduleName": "TMDBCore",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[TMDBCore.TMDBLanguage]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMDBLanguage",
+                        "printedName": "TMDBCore.TMDBLanguage",
+                        "usr": "s:8TMDBCore12TMDBLanguageO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8TMDBCore12TMDBLanguageO8allCasesSayACGvgZ",
+                "mangledName": "$s8TMDBCore12TMDBLanguageO8allCasesSayACGvgZ",
+                "moduleName": "TMDBCore",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:8TMDBCore12TMDBLanguageO",
+        "mangledName": "$s8TMDBCore12TMDBLanguageO",
+        "moduleName": "TMDBCore",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[TMDBCore.TMDBLanguage]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMDBLanguage",
+                        "printedName": "TMDBCore.TMDBLanguage",
+                        "usr": "s:8TMDBCore12TMDBLanguageO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Identifiable",
+            "printedName": "Identifiable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ID",
+                "printedName": "ID",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12IdentifiableP",
+            "mangledName": "$ss12IdentifiableP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -876,7 +1286,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(baseURL:token:id:page:)",
+            "printedName": "init(baseURL:token:id:page:language:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -908,11 +1318,18 @@
                 "printedName": "Swift.Int",
                 "hasDefaultArg": true,
                 "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TMDBLanguage",
+                "printedName": "TMDBCore.TMDBLanguage",
+                "hasDefaultArg": true,
+                "usr": "s:8TMDBCore12TMDBLanguageO"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:8TMDBCore19MovieDetailEndPointV7baseURL5token2id4pageACSS_SSS2itcfc",
-            "mangledName": "$s8TMDBCore19MovieDetailEndPointV7baseURL5token2id4pageACSS_SSS2itcfc",
+            "usr": "s:8TMDBCore19MovieDetailEndPointV7baseURL5token2id4page8languageACSS_SSS2iAA12TMDBLanguageOtcfc",
+            "mangledName": "$s8TMDBCore19MovieDetailEndPointV7baseURL5token2id4page8languageACSS_SSS2iAA12TMDBLanguageOtcfc",
             "moduleName": "TMDBCore",
             "declAttributes": [
               "AccessControl",
@@ -1021,7 +1438,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(baseURL:token:query:page:)",
+            "printedName": "init(baseURL:token:query:page:language:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1053,11 +1470,18 @@
                 "printedName": "Swift.Int",
                 "hasDefaultArg": true,
                 "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TMDBLanguage",
+                "printedName": "TMDBCore.TMDBLanguage",
+                "hasDefaultArg": true,
+                "usr": "s:8TMDBCore12TMDBLanguageO"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:8TMDBCore20SearchMoviesEndPointV7baseURL5token5query4pageACSS_S2SSitcfc",
-            "mangledName": "$s8TMDBCore20SearchMoviesEndPointV7baseURL5token5query4pageACSS_S2SSitcfc",
+            "usr": "s:8TMDBCore20SearchMoviesEndPointV7baseURL5token5query4page8languageACSS_S2SSiAA12TMDBLanguageOtcfc",
+            "mangledName": "$s8TMDBCore20SearchMoviesEndPointV7baseURL5token5query4page8languageACSS_S2SSiAA12TMDBLanguageOtcfc",
             "moduleName": "TMDBCore",
             "declAttributes": [
               "AccessControl",
@@ -1166,7 +1590,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(baseURL:token:page:)",
+            "printedName": "init(baseURL:token:page:language:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1192,11 +1616,18 @@
                 "printedName": "Swift.Int",
                 "hasDefaultArg": true,
                 "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TMDBLanguage",
+                "printedName": "TMDBCore.TMDBLanguage",
+                "hasDefaultArg": true,
+                "usr": "s:8TMDBCore12TMDBLanguageO"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:8TMDBCore22TrendingMoviesEndPointV7baseURL5token4pageACSS_SSSitcfc",
-            "mangledName": "$s8TMDBCore22TrendingMoviesEndPointV7baseURL5token4pageACSS_SSSitcfc",
+            "usr": "s:8TMDBCore22TrendingMoviesEndPointV7baseURL5token4page8languageACSS_SSSiAA12TMDBLanguageOtcfc",
+            "mangledName": "$s8TMDBCore22TrendingMoviesEndPointV7baseURL5token4page8languageACSS_SSSiAA12TMDBLanguageOtcfc",
             "moduleName": "TMDBCore",
             "declAttributes": [
               "AccessControl",
@@ -16546,6 +16977,27 @@
       "offset": 1969,
       "length": 5,
       "value": "\"GET\""
+    },
+    {
+      "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TMDBLanguage.swift",
+      "kind": "StringLiteral",
+      "offset": 165,
+      "length": 7,
+      "value": "\"en-US\""
+    },
+    {
+      "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TMDBLanguage.swift",
+      "kind": "StringLiteral",
+      "offset": 210,
+      "length": 7,
+      "value": "\"fr-FR\""
+    },
+    {
+      "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/Models\/TMDBLanguage.swift",
+      "kind": "StringLiteral",
+      "offset": 258,
+      "length": 7,
+      "value": "\"es-ES\""
     },
     {
       "filePath": "\/Users\/anjuvinsi\/Documents\/Watchly\/TMDBCore\/TMDBCore\/EndPoints\/MovieDetailEndPoint.swift",

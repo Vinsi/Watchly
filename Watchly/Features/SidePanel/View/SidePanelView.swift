@@ -8,34 +8,44 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage("colorscheme") private var appearance: String = "system"
-    @AppStorage("language") private var language: String = "en"
+    @State private var language: String = "en"
     @EnvironmentObject var environment: AppEnvironment
     @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var appearenceManager: AppearanceManager
+    @EnvironmentObject var languageManager: LanguageManager
+    @State var selectedMode: String = "system"
 
     var body: some View {
 
         Form {
             // MARK: - Appearance
 
-            Section(header: Text("Appearance")) {
-                Picker("Theme", selection: $appearance) {
-                    Text("System").tag("system")
-                    Text("Light").tag("light")
-                    Text("Dark").tag("dark")
+            Section(header: Text(Localized.Settings.appearance)) {
+                Picker(Localized.Settings.theme, selection: $selectedMode) {
+                    ForEach(AppearanceManager.Mode.allCases, id: \.rawValue) { value in
+                        Text(value.rawValue.capitalized).tag(value.rawValue)
+                    }
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                .tint(themeManager.currentTheme.colors.primary)
             }
-            .onChange(of: appearance) { value in
-                themeManager.changeColorScheme(mode: value)
+            .onChange(of: selectedMode) { value in
+                appearenceManager.change(color: .init(value: value))
+            }
+            .onChange(of: appearenceManager.selectedColorScheme) { _ in
+                selectedMode = appearenceManager.selectedColorMode.rawValue
+            }
+            .onAppear {
+                selectedMode = appearenceManager.selectedColorMode.rawValue
             }
 
             // MARK: - Language
 
-            Section(header: Text("Language")) {
-                Picker("App Language", selection: $language) {
-                    Text("English").tag("en")
-                    Text("French").tag("fr")
+            Section(header: Text(Localized.Settings.applanguage)) {
+                Picker(Localized.Settings.applanguage, selection: $language) {
+                    ForEach(LanguageManager.SupportedLanguages.allCases, id: \.rawValue) { value in
+                        Text(value.title).tag(value.rawValue)
+                    }
                 }
                 .foregroundColor(themeManager.currentTheme.colors.primary)
                 .pickerStyle(.menu)
@@ -43,9 +53,9 @@ struct SettingsView: View {
 
             // MARK: - About
 
-            Section(header: Text("About")) {
+            Section(header: Text(Localized.Settings.aboutme)) {
                 HStack {
-                    Text("Version")
+                    Text(Localized.Settings.version)
                         .foregroundColor(themeManager.currentTheme.colors.primary)
 
                     Spacer()
@@ -55,22 +65,29 @@ struct SettingsView: View {
                 }
 
                 HStack {
-                    Text("Environment")
+                    Text(Localized.Settings.environment)
                         .foregroundColor(themeManager.currentTheme.colors.primary)
                     Spacer()
                     Text(environment.scheme.rawValue.capitalized)
                         .foregroundColor(themeManager.currentTheme.colors.textSecondary)
                 }
-                AboutMeView()
+            }
+            .onChange(of: language) { newValue in
+                languageManager.setLanguage(LanguageManager.SupportedLanguages(rawValue: newValue) ?? .english)
+            }
+            .task {
+                language = languageManager.selectedLanguage.rawValue
             }
 
+            .listRowSeparator(.hidden)
             .listRowBackground(themeManager.currentTheme.colors.secondary)
-            .listRowInsets(EdgeInsets(top: 30, leading: 20, bottom: 8, trailing: 20))
-            .navigationTitle("Settings")
+            .listRowInsets(EdgeInsets(top: 30, leading: 8, bottom: 8, trailing: 8))
+            .navigationTitle(Localized.Settings.settingTitle)
             .navigationBarTitleDisplayMode(.inline)
             .background(Color(.clear))
             .edgesIgnoringSafeArea(.all)
+
+            AboutMeView()
         }
     }
-
 }

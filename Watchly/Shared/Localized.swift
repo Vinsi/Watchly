@@ -6,46 +6,64 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Localized {
     // General Titles
-    static let detailTitle = String(localized: "detail_title")
-    static let homeTitle = String(localized: "home_title")
-    static let searchTitle = String(localized: "search_title")
-    static let settingTitle = String(localized: "setting_title")
-    static let searchPlaceholder = String(localized: "search_placeholder")
-    static let searchButton = String(localized: "search_button")
+    static let detailTitle: LocalizedStringKey = "detail.title"
+    static let homeTitle: LocalizedStringKey = "home.title"
+    static let searchTitle: LocalizedStringKey = "search.title"
+
+    static let searchPlaceholder: LocalizedStringKey = "search.placeholder"
 
     enum ErrorAlert {
-        static let title = String(localized: "error")
-        static let retry = String(localized: "retry")
+        static let title: LocalizedStringKey = "error"
+        static let retry: LocalizedStringKey = "retry"
     }
 
     // Error Messages
     enum Error {
-        static let malformedURL = String(localized: "malformed_url")
-        static let unknown = String(localized: "unknown")
-        static let disconnected = String(localized: "disconnected")
-        static let noInternetConnection = String(localized: "no_internet_connection")
-        static let connectionError = String(localized: "connection_error")
-        static func failedToDecode(message: String) -> String {
-            String(format: NSLocalizedString("failed_to_decode", comment: ""), message)
-        }
+        static let malformedURL: LocalizedStringKey = "error.malformed"
+        static let unknown: LocalizedStringKey = "error.unknown"
+        static let disconnected: LocalizedStringKey = "error.disconnected"
+        static let noInternetConnection: LocalizedStringKey = "error.nointernet"
+        static let connectionError: LocalizedStringKey = "error.connection"
+        static let decodeError: LocalizedStringKey = "error.failedtodecode"
     }
 
     enum Attributes {
-        static let releaseDate = String(localized: "release_date")
-        static let runtime = String(localized: "runtime")
-        static let budget = String(localized: "budget")
-        static let revenue = String(localized: "revenue")
-        static let language = String(localized: "language")
-        static let production = String(localized: "production")
-        static let gotowebsite = String(localized: "goto.website")
+        static let releaseDate: LocalizedStringKey = "release.date"
+        static let runtime: LocalizedStringKey = "runtime"
+        static let budget: LocalizedStringKey = "budget"
+        static let revenue: LocalizedStringKey = "revenue"
+        static let language: LocalizedStringKey = "language"
+        static let production: LocalizedStringKey = "production"
+        static let gotowebsite: LocalizedStringKey = "goto.website"
     }
 
     enum Sections {
-        static let details = String(localized: "details")
-        static let genres = String(localized: "genres")
-        static let overview = String(localized: "overview")
+        static let details: LocalizedStringKey = "details"
+        static let genres: LocalizedStringKey = "genres"
+        static let overview: LocalizedStringKey = "overview"
+    }
+
+    enum Settings {
+        // static let aboutmeContent: LocalizedStringKey = "about.me.content"
+        static let applanguage: LocalizedStringKey = "app.language"
+        static let version: LocalizedStringKey = "version.title"
+        static let environment: LocalizedStringKey = "environment.title"
+        static let appearance: LocalizedStringKey = "appearence"
+        static let theme: LocalizedStringKey = "theme"
+        static let settingTitle: LocalizedStringKey = "setting.title"
+        static let aboutme: LocalizedStringKey = "setting.aboutme"
+
+        static func aboutMe(appName: String) -> LocalizedStringKey {
+            "about.me.content\(appName)"
+        }
+    }
+
+    enum Languages {
+        static let english: LocalizedStringKey = "language.english"
+        static let french: LocalizedStringKey = "language.french"
     }
 }

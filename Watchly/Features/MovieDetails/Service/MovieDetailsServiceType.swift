@@ -22,10 +22,11 @@ struct MovieDetailsServiceTypeImpl: MovieDetailsServiceType {
     let baseURLProvider: BaseURLProvider
     let tokenProvider: TokenProvider
     let cachefacilitator: EndPointCacheFaciltator<MovieDetailEndPoint>
+    let language: LanguageManager
 
     func getDetails(movieID: Int) async throws -> MovieDetails {
         try await cachefacilitator.executeWithCache(
-            endPoint: MovieDetailEndPoint(baseURL: baseURLProvider.baseURL, token: tokenProvider.token, id: movieID),
+            endPoint: MovieDetailEndPoint(baseURL: baseURLProvider.baseURL, token: tokenProvider.token, id: movieID, language: language.selectedLanguage.tmdbLang),
             network: network
         )
     }

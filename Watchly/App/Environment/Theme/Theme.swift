@@ -107,7 +107,9 @@ protocol ColorPalette {
     var backgroundSecondary: Color { get }
     var textPrimary: Color { get }
     var textSecondary: Color { get }
+    var textOnTags: Color { get }
     var iconColor: Color { get }
+    var shadowColor: Color { get }
 }
 
 struct DefaultColorPalette: ColorPalette {
@@ -118,7 +120,10 @@ struct DefaultColorPalette: ColorPalette {
         backgroundSecondary: Color = Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)),
         textPrimary: Color = Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)),
         textSecondary: Color = Color(#colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)),
-        iconColor: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+        textOnTags: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+        iconColor: Color = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+        shadowColor: Color = Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
+
     ) {
         self.primary = primary
         self.secondary = secondary
@@ -127,6 +132,8 @@ struct DefaultColorPalette: ColorPalette {
         self.textSecondary = textSecondary
         self.backgroundSecondary = backgroundSecondary
         self.iconColor = iconColor
+        self.textOnTags = textOnTags
+        self.shadowColor = shadowColor
     }
 
     let primary: Color
@@ -134,8 +141,10 @@ struct DefaultColorPalette: ColorPalette {
     let background: Color
     let textPrimary: Color
     let textSecondary: Color
+    let textOnTags: Color
     let backgroundSecondary: Color
     let iconColor: Color
+    let shadowColor: Color
 }
 
 struct Images {
@@ -172,7 +181,9 @@ struct DarkTheme: Theme {
         backgroundSecondary: Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)),
         textPrimary: Color(#colorLiteral(red: 0.747773007, green: 0.6529044125, blue: 0.9686274529, alpha: 1)),
         textSecondary: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7995057398)),
-        iconColor: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+        textOnTags: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7995057398)),
+        iconColor: Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+        shadowColor: Color(#colorLiteral(red: 0.6127355099, green: 0.1732650101, blue: 0.9525056481, alpha: 1))
     )
     var spacing: Spacing = .init()
     var images: Images = .init()
@@ -192,32 +203,72 @@ import SwiftUI
 /// Manages and updates the app theme dynamically.
 final class ThemeManager: ObservableObject {
     @Published var currentTheme: Theme = DefaultTheme()
-    @AppStorage("colorscheme") var selectedTheme: String = "system"
 
-    lazy var dark = DarkTheme()
-    lazy var light = DefaultTheme()
-
-    func changeColorScheme(mode: String) {
-        if mode == "dark" {
-            currentTheme = dark
-        } else {
-            currentTheme = light
-        }
-    }
-
-    init() {
-        let saved = UserDefaults.standard.string(forKey: "colorscheme") ?? "system"
-        changeColorScheme(mode: saved)
+    func changeTheme(scheme: ColorScheme) {
+        currentTheme = scheme == .dark ? DarkTheme() : DefaultTheme()
     }
 }
 
-extension String {
+class AppearanceManager: ObservableObject {
+    @Published private(set) var selectedColorScheme: ColorScheme?
+    var selectedColorMode: Mode {
+        Mode(value: selectedColorScheme)
+    }
 
-    var toColorScheme: ColorScheme {
-        switch self {
-        case "light": return .light
-        case "dark": return .dark
-        default: return .light
+    private let key = "colorscheme"
+    private let keyStore: KeyValueStorage
+
+    enum Mode: String, CaseIterable {
+        case system
+        case dark
+        case light
+
+        init(value: String?) {
+            self = .init(rawValue: value ?? "system") ?? .light
         }
+
+        init(value: ColorScheme?) {
+            switch value {
+            case .some(.dark): self = .dark
+            case .some(.light): self = .light
+            default: self = .system
+            }
+        }
+
+        var color: ColorScheme? {
+            switch self {
+            case .dark: .dark
+            case .light: .light
+            case .system: nil
+            }
+        }
+    }
+
+    private func getSavedMode() -> Mode {
+        let value: String = keyStore.get(forKey: key) ?? "system"
+        return Mode(value: value)
+    }
+
+    private func setSavedMode(mode: Mode) {
+        keyStore.set(mode.rawValue, forKey: key)
+    }
+
+    func updateValueState() {
+        // DispatchQueue.global().async { [weak self] in
+        // guard let self else { return }
+        let value = getSavedMode()
+
+        selectedColorScheme = value.color
+        // }
+        // }
+    }
+
+    init(keyValueStore: KeyValueStorage) {
+        keyStore = keyValueStore
+    }
+
+    func change(color: Mode) {
+        setSavedMode(mode: color)
+        updateValueState()
     }
 }

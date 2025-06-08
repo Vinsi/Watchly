@@ -15,8 +15,18 @@ struct AppEntry: App {
     /// 📌 **Router for Navigation Handling**
     @StateObject var router = Router()
 
+    @StateObject private var languageManager = LanguageManager.shared
+
+    @Environment(\.colorScheme) var systemColorScheme
+
     /// 🎨 **Theme Manager for Dark/Light Mode**
     @ObservedObject var themeManager = ThemeManager()
+
+    @ObservedObject var appearenceManager = {
+        let appearence = AppearanceManager(keyValueStore: UserDefaultsStorage())
+        appearence.updateValueState()
+        return appearence
+    }()
 
     @ObservedObject var orientationObserver = DeviceOrientationObserver.shared
 
@@ -27,6 +37,7 @@ struct AppEntry: App {
     @State private var showSidePanel = false
     /// 🎨 **Initialize App with Navigation Bar Styling**
     init() {
+        LanguageManager.shared.initialize()
         internetConnectivityChecker.startMonitoring()
         applyNavigationBarStyle()
     }
@@ -44,7 +55,7 @@ struct AppEntry: App {
                                         showSidePanel.toggle()
                                     }
                                 }) {
-                                    Image(systemName: "list.bullet").foregroundColor(Color.purple)
+                                    Image(systemName: "slider.horizontal.3").foregroundColor(Color.purple)
                                 }
                                 .frame(width: 24, height: 24)
                             }
@@ -61,7 +72,10 @@ struct AppEntry: App {
                 .environmentObject(internetConnectivityChecker)
                 .environmentObject(favouriteManager)
                 .environmentObject(orientationObserver)
-                .preferredColorScheme(themeManager.selectedTheme.toColorScheme)
+                .environmentObject(appearenceManager)
+                .environmentObject(languageManager)
+                .preferredColorScheme(appearenceManager.selectedColorScheme)
+                .environment(\.locale, languageManager.selectedLanguage.locale)
 
                 if internetConnectivityChecker.isConnected == false {
                     let theme = themeManager.currentTheme
@@ -92,7 +106,7 @@ struct AppEntry: App {
 }
 
 /***
-   Note Separating as its convienice for look ups.
+ Note Separating as its convienice for look ups.
  */
 /// 📌 **Root View - Manages Tabs & Internet Alerts**
 struct RootView: View {
@@ -108,21 +122,33 @@ struct RootView: View {
     /// 📌 Handle Navigation Routing
     @EnvironmentObject var environment: AppEnvironment
 
+    @EnvironmentObject var appearenceManager: AppearanceManager
+
+    @Environment(\.colorScheme) var systemColorScheme
+
     @State var isError: Bool = false
-    @State var title: String = Router.Tab.list.title
+    @State var title: LocalizedStringKey = Router.Tab.list.title
     @State private var showSidePanel = true
 
     var body: some View {
         ZStack {
             TabView(selection: $router.selectedTab) {
 
-                TrendingMovieListCoordinator(environment: environment, router: router)
-                    .start()
-                    .tag(Router.Tab.list)
+                TrendingMovieListCoordinator(
+                    environment: environment,
+                    router: router,
+                    languageManager: LanguageManager.shared
+                )
+                .start()
+                .tag(Router.Tab.list)
 
-                SearchMoviesCoordinator(environment: environment, router: router)
-                    .start()
-                    .tag(Router.Tab.search)
+                SearchMoviesCoordinator(
+                    environment: environment,
+                    router: router,
+                    languageManager: LanguageManager.shared
+                )
+                .start()
+                .tag(Router.Tab.search)
             }
             .accentColor(themeManager.currentTheme.colors.primary)
         }
@@ -131,6 +157,14 @@ struct RootView: View {
                 Text(title)
                     .font(.headline)
                     .foregroundColor(.purple)
+            }
+        }
+        .onChange(of: systemColorScheme) { newValue in
+            themeManager.changeTheme(scheme: newValue)
+        }
+        .onChange(of: appearenceManager.selectedColorScheme) { newValue in
+            if let newValue {
+                themeManager.changeTheme(scheme: newValue)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

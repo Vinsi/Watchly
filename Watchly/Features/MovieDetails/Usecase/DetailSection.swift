@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import TMDBCore
 
 enum DetailSection: Identifiable {
@@ -14,7 +15,7 @@ enum DetailSection: Identifiable {
     case posterImage(PosterAttributes)
     case overview(String)
     case genres([Genre])
-    case details([(title: String, value: String)])
+    case details([(title: LocalizedStringKey, value: String)])
     case link(url: URL?)
 
     var id: String {
@@ -34,7 +35,7 @@ enum DetailSection: Identifiable {
         }
     }
 
-    var title: String {
+    var title: LocalizedStringKey {
         switch self {
         case .posterBackDrop:
             return ""
